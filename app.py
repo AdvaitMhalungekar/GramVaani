@@ -34,7 +34,6 @@ def nearby_hospitals():
     print(hospitals)
     return jsonify(hospitals)
 
-
 # @app.route('/weather')
 # def weather():
 #     return render_template('weatherPage.html')
@@ -42,6 +41,10 @@ def nearby_hospitals():
 @app.route('/agri')
 def agri():
     return render_template('agri.html')
+
+@app.route('/health')
+def health():
+    return render_template('health.html')
 
 @app.route("/weather")
 def weather():
