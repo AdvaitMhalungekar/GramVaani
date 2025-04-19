@@ -8,6 +8,10 @@ app = Flask(__name__)
 def index():
     return render_template('map.html')
 
+@app.route('/')
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route('/nearby_hospitals', methods=['POST'])
 def nearby_hospitals():
     data = request.get_json()
@@ -30,8 +34,7 @@ def nearby_hospitals():
     print(hospitals)
     return jsonify(hospitals)
 
-def dashboard():
-    return render_template('dashboard.html')
+
 
 # @app.route('/weather')
 # def weather():
@@ -40,6 +43,10 @@ def dashboard():
 @app.route('/agri')
 def agri():
     return render_template('agri.html')
+
+@app.route('/health')
+def health():
+    return render_template('health.html')
 
 @app.route("/weather")
 def weather():
