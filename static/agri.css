@@ -1,0 +1,1128 @@
+/* Agricultural Advisory Page Specific Styles */
+
+/* Agri Hero Section */
+.agri-hero {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    padding: 2rem 0;
+    color: white;
+  }
+  
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+  
+  .breadcrumb a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .breadcrumb i {
+    font-size: 0.7rem;
+  }
+  
+  .agri-title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .main-content {
+    padding: 2rem 0;
+  }
+  
+  /* Quick Access Buttons */
+  .quick-access {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .quick-access-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition);
+    text-align: center;
+  }
+  
+  .quick-access-btn i {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    color: #4caf50;
+  }
+  
+  .quick-access-btn span {
+    font-weight: 500;
+  }
+  
+  .quick-access-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .quick-access-btn.vr-btn i {
+    color: #7b1fa2;
+  }
+  
+  /* Section Styling */
+  .section {
+    margin-bottom: 3rem;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .section-title i {
+    color: #4caf50;
+  }
+  
+  /* Agricultural Advisory Page Specific Styles */
+
+/* Agri Hero Section */
+.agri-hero {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    padding: 2rem 0;
+    color: white;
+  }
+  
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+  
+  .breadcrumb a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .breadcrumb i {
+    font-size: 0.7rem;
+  }
+  
+  .agri-title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .main-content {
+    padding: 2rem 0;
+  }
+  
+  /* Quick Access Buttons */
+  .quick-access {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .quick-access-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition);
+    text-align: center;
+  }
+  
+  .quick-access-btn i {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    color: #4caf50;
+  }
+  
+  .quick-access-btn span {
+    font-weight: 500;
+  }
+  
+  .quick-access-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .quick-access-btn.vr-btn i {
+    color: #7b1fa2;
+  }
+  
+  /* Section Styling */
+  .section {
+    margin-bottom: 3rem;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .section-title i {
+    color: #4caf50;
+  }
+  
+  .section-description {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Crop Recommendations */
+  .crop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .crop-card {
+    display: flex;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    transition: var(--transition);
+  }
+  
+  .crop-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  
+  .crop-card.recommended {
+    border: 2px solid #4caf50;
+  }
+  
+  .crop-image {
+    width: 40%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .crop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .recommendation-badge {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    background-color: #4caf50;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 0 4px 4px 0;
+  }
+  
+  .crop-details {
+    padding: 1.2rem;
+    flex: 1;
+  }
+  
+  .crop-details h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+  }
+  
+  .crop-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    background-color: #f5f5f5;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+  }
+  
+  .crop-description {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .crop-details-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .crop-details-btn:hover {
+    background-color: #c8e6c9;
+  }
+  
+  .view-all-container {
+    text-align: center;
+  }
+  
+  .view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+    border-radius: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .view-all-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Market Prices */
+  .market-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .market-select {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .market-select label {
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+  
+  .market-select select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: white;
+    outline: none;
+    min-width: 220px;
+  }
+  
+  .update-info {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .market-table-container {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  .market-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .market-table th,
+  .market-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .market-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .market-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .trend-up {
+    color: #2e7d32;
+    font-weight: 500;
+  }
+  
+  .trend-down {
+    color: #c62828;
+    font-weight: 500;
+  }
+  
+  .trend-stable {
+    color: #757575;
+    font-weight: 500;
+  }
+  
+  .price-analysis {
+    background-color: #f5f5f5;
+    padding: 1.2rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+  }
+  
+  .price-analysis h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .analysis-content p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .market-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .market-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .market-action-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Content Wrapper for News and VR */
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* News Section */
+  .news-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .news-card {
+    display: flex;
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  
+  .news-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    background-color: #f8f9fa;
+  }
+  
+  .news-image {
+    width: 80px;
+    min-width: 80px;
+    background-color: #e8f5e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #4caf50;
+  }
+  
+  .news-content {
+    padding: 1rem;
+    flex: 1;
+  }
+  
+  .news-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+  
+  .news-preview {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .news-date {
+    font-size: 0.75rem;
+    color: #757575;
+  }
+
+  .weather-card {
+        background: linear-gradient(to right, #f0f8ff, #e6f2ff);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .day-summary {
+        padding: 16px;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.2s;
+    }
+    
+    .day-summary:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .day-info {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 1fr 24px;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .day-date {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #2c3e50;
+    }
+    
+    .day-condition {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .day-condition img {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .day-temp {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .temp-max {
+        font-weight: 700;
+        color: #e74c3c;
+    }
+    
+    .temp-min {
+        color: #3498db;
+    }
+    
+    .sun-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+    
+    .sun-icon {
+        margin-right: 4px;
+    }
+    
+    .expand-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .chevron {
+        transition: transform 0.3s ease;
+    }
+    
+    .hourly-container {
+        display: none;
+        max-height: 0;
+        transition: max-height 0.5s ease;
+        overflow: hidden;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .hourly-scroll {
+        display: flex;
+        overflow-x: auto;
+        padding: 16px;
+        gap: 12px;
+        scrollbar-width: thin;
+    }
+    
+    .hourly-scroll::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .hourly-scroll::-webkit-scrollbar-thumb {
+        background-color: #bdc3c7;
+        border-radius: 3px;
+    }
+    
+    .hour-card {
+        flex: 0 0 180px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .hour-time {
+        font-weight: 700;
+        color: #2c3e50;
+    }
+    
+    .hour-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .hour-temp {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #3498db;
+    }
+    
+    .hour-details {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        font-size: 0.9rem;
+    }
+    
+    .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .air-quality {
+        width: 100%;
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed #e0e0e0;
+        font-size: 0.8rem;
+    }
+    
+    .aq-title {
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 4px;
+        color: #7f8c8d;
+    }
+    
+    .aq-values {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 0.75rem;
+        color: #7f8c8d;
+    }
+    
+    /* Expanded state */
+    .weather-card.expanded .chevron {
+        transform: rotate(180deg);
+    }
+    
+    .weather-card.expanded .hourly-container {
+        display: block;
+        max-height: 300px;
+    }
+
+    @media (max-width: 768px) {
+        .day-info {
+            grid-template-columns: 1fr 1fr 24px;
+            grid-template-rows: auto auto;
+            gap: 8px;
+        }
+        
+        .day-date {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        .day-condition {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .day-temp {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        
+        .sun-info {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        
+        .expand-icon {
+            grid-column: 3;
+            grid-row: 1 / span 2;
+        }
+    }
+  
+  /* VR Equipment Guide */
+  .vr-section {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+  }
+  
+  .vr-header {
+    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+    color: white;
+    padding: 1.2rem;
+  }
+  
+  .vr-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .vr-header p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+  
+  .vr-preview {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+  
+  .vr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .vr-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .vr-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .vr-overlay i {
+    font-size: 3rem;
+    color: white;
+  }
+  
+  .vr-equipment-list {
+    padding: 1.2rem;
+  }
+  
+  .vr-equipment-list h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+  
+  .equipment-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .equipment-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    background-color: #f5f5f5;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  
+  .equipment-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .equipment-item.active {
+    background-color: #f3e5f5;
+    border-left: 4px solid #9c27b0;
+  }
+  
+  .equipment-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e1bee7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #7b1fa2;
+  }
+  
+  .equipment-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+  }
+  
+  .equipment-info p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  
+  .vr-actions {
+    padding: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .vr-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  .vr-action-btn.primary {
+    background-color: #9c27b0;
+    color: white;
+  }
+  
+  .vr-action-btn.primary:hover {
+    background-color: #7b1fa2;
+  }
+  
+  .vr-action-btn.secondary {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+  }
+  
+  .vr-action-btn.secondary:hover {
+    background-color: #e1bee7;
+  }
+  
+  /* Chatbot Section */
+  .chatbot-section {
+    margin-bottom: 3rem;
+  }
+  
+  .chatbot-container {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+  }
+  
+  .chatbot-header {
+    background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+    color: white;
+    padding: 1.2rem;
+  }
+  
+  .chatbot-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .chatbot-header p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    max-width: 80%;
+  }
+  
+  .bot-message {
+    align-self: flex-start;
+  }
+  
+  .user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+  }
+  
+  .message-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+  
+  .bot-message .message-avatar {
+    background-color: #e8f5e9;
+    color: #43a047;
+  }
+  
+  .user-message .message-avatar {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .message-content {
+    background-color: #f5f5f5;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    border-top-left-radius: 0;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    box-shadow: var(--shadow-sm);
+    line-height: 1.5;
+  }
+  
+  .user-message .message-content {
+    background-color: #e3f2fd;
+    border-radius: 1rem;
+    border-top-right-radius: 0;
+  }
+  
+  .chat-input {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid #f0f0f0;
+    gap: 0.5rem;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+  }
+  
+  .chat-input input:focus {
+    border-color: #66bb6a;
+    box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.2);
+  }
+  
+  .chat-input button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #66bb6a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .chat-input button:hover {
+    background-color: #43a047;
+  }
+  
+  .quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+  }
+  
+  .quick-question-btn {
+    background-color: #f0f7ff;
+    color: #1976d2;
+    padding: 0.5rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid #e3f2fd;
+  }
+  
+  .quick-question-btn:hover {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+    }
+    
+    .crop-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .quick-access {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section {
+      padding: 1.5rem;
+    }
+    
+    .crop-image {
+      width: 35%;
+    }
+    
+    .market-filter {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .quick-access {
+      grid-template-columns: 1fr;
+    }
+    
+    .crop-card {
+      flex-direction: column;
+    }
+    
+    .crop-image {
+      width: 100%;
+      height: 180px;
+    }
+    
+    .message {
+      max-width: 90%;
+    }
+    
+    .market-table th,
+    .market-table td {
+      padding: 0.8rem 0.5rem;
+      font-size: 0.85rem;
+    }
+    
+    .section-title {
+      font-size: 1.3rem;
+    }
+  }

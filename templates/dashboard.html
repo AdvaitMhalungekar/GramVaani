@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gramvaani - Voice of the Village</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo"
+                        class="logo-img">
+                </div>
+                <div class="logo-text">Gram<span class="accent">vaani</span></div>
+            </div>
+            <div class="header-actions">
+                <div class="language-mic-wrapper">
+                    <div class="language-selector" onclick="toggleDropdown()">
+                        <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <button class="mic-navbar">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="dropdown-item">English</div>
+                    <div class="dropdown-item">हिन्दी</div>
+                    <div class="dropdown-item">मराठी</div>
+                    <div class="dropdown-item">தமிழ்</div>
+                    <div class="dropdown-item">বাংলা</div>
+                    <div class="dropdown-item">తెలుగు</div>
+                    <div class="dropdown-item">ગુજરાતી</div>
+                    <div class="dropdown-item">ଓଡ଼ିଆ</div>
+                    <div class="dropdown-item">ಕನ್ನಡ</div>
+                    <div class="dropdown-item">മലയാളം</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="greeting-title">नमस्ते! कैसे मदद कर सकते हैं?</h1>
+            <p class="greeting-subtitle">How can we help you today?</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Main Services -->
+        <div class="main-services">
+            <!-- Agricultural Advisory -->
+            <a href="/agri" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <div class="service-icon-container agri-bg">
+                    <i class="fas fa-seedling service-icon agri-icon"></i>
+                </div>
+                <div class="service-info">
+                    <h2 class="service-title">Agricultural Advisory</h2>
+                    <p class="service-description">Get expert tips and updates for your farm</p>
+                    <div class="service-action">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            </a>
+
+            <!-- Healthcare -->
+            <div class="service-card">
+                <div class="service-icon-container health-bg">
+                    <i class="fas fa-heartbeat service-icon health-icon"></i>
+                </div>
+                <div class="service-info">
+                    <h2 class="service-title">Healthcare</h2>
+                    <p class="service-description">Medical info & support for your family</p>
+                    <div class="service-action">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Government Schemes -->
+            <div class="service-card">
+                <div class="service-icon-container govt-bg">
+                    <i class="fas fa-landmark service-icon govt-icon"></i>
+                </div>
+                <div class="service-info">
+                    <h2 class="service-title">Govt. Schemes</h2>
+                    <p class="service-description">Check your eligibility for benefits</p>
+                    <div class="service-action">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather -->
+            <a href="/weather" style="text-decoration: none; color: inherit;">
+                <div class="service-card">
+                    <div class="service-icon-container weather-bg">
+                        <i class="fas fa-cloud-sun service-icon weather-icon"></i>
+                    </div>
+                    <div class="service-info">
+                        <h2 class="service-title">Weather Updates</h2>
+                        <p class="service-description">Local forecast for better planning</p>
+                        <div class="service-action">
+                            <span>Check Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Feature banner -->
+        <div class="feature-banner">
+            <div class="feature-content">
+                <h2>Voice-First Experience</h2>
+                <p>Speak in your language to access all services. Perfect for when your hands are busy.</p>
+                <button class="feature-btn">Try Voice Commands</button>
+            </div>
+            <div class="feature-image">
+                <i class="fas fa-microphone-alt"></i>
+            </div>
+        </div>
+
+        <!-- Farmer Testimonials Section -->
+        <div class="testimonial-section">
+            <h2 class="section-title"><i class="fas fa-wheat-awn"></i> Farmer Stories</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">Thanks to Gramvaani, I learned the best time to sow my crops. My yield
+                        improved by 30% this season!</p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <p class="testimonial-name">Ramesh, Maharashtra</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">The health tips helped me take better care of my family during monsoon
+                        season. Truly a lifeline for rural communities.</p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <p class="testimonial-name">Sita, Madhya Pradesh</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">I discovered a new government scheme that helped with irrigation costs.
+                        The application process was simple with guidance.</p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <p class="testimonial-name">Mohan, Bihar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo"
+                        class="footer-logo-img">
+                    <span>Gramvaani</span>
+                </div>
+                <p class="footer-tagline">Voice of the Village</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact</a>
+                <a href="#">Help</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mic-button">
+        <div class="pulse-ring"></div>
+        <div class="mic-icon">
+            <i class="fas fa-microphone"></i>
+        </div>
+        <div class="mic-tooltip">Tap to speak</div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.addEventListener('click', function (e) {
+            const langSelector = document.querySelector('.language-selector');
+            const dropdown = document.getElementById('languageDropdown');
+            if (!langSelector.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Add animation class on scroll
+        window.addEventListener('scroll', function () {
+            const cards = document.querySelectorAll('.service-card, .testimonial-card');
+
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (cardPosition < screenPosition) {
+                    card.classList.add('animate');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
