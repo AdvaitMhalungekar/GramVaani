@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/map')
+@app.route('/map')                      
 def index():
     return render_template('map.html')
 
@@ -33,8 +33,6 @@ def nearby_hospitals():
     hospitals = response.json().get('elements', [])
     print(hospitals)
     return jsonify(hospitals)
-
-
 
 # @app.route('/weather')
 # def weather():
