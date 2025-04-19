@@ -33,6 +33,7 @@ def simplify_forecast_data(data):
             "min_temp_c": day_data['day']['mintemp_c'],
             "avg_temp_c": day_data['day']['avgtemp_c'],
             "condition": day_data['day']['condition']['text'],
+            "icon": day_data['day']['condition']['icon'],
             "sunrise": day_data['astro']['sunrise'],
             "sunset": day_data['astro']['sunset'],
             "hourly_data": []
@@ -46,6 +47,7 @@ def simplify_forecast_data(data):
                 "time": hour['time'],
                 "temp_c": hour['temp_c'],
                 "condition": hour['condition']['text'].strip(),
+                "icon": hour['condition']['icon'].strip(),
                 "humidity": hour['humidity'],
                 "wind_kph": hour['wind_kph'],
                 "air_quality": {
@@ -57,6 +59,7 @@ def simplify_forecast_data(data):
             day_summary["hourly_data"].append(hour_summary)
 
         simplified.append(day_summary)
+        simplified.append(data['alerts'])
 
     return simplified
 

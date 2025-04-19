@@ -1,7 +1,6 @@
 import os
 import google.generativeai as genai
 from weather_fetcher import get_weather_data
-from dotenv import load_dotenv
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 history= []
@@ -15,7 +14,8 @@ generation_config = {
   "max_output_tokens": 8192,
   "response_mime_type": "text/plain",
 }
-def chat_weather(weather_data,chat):
+def chat_weather(chat):
+  weather_data = get_weather_data("Kolhapur")
   model = genai.GenerativeModel(
     model_name="gemini-1.5-flash",
     generation_config=generation_config,
@@ -36,7 +36,6 @@ def chat_weather(weather_data,chat):
 
   print(response.text)
   
-weather_data = get_weather_data("Kolhapur")
 while True:
   chat = input("Enter your question: ")
-  chat_weather(weather_data,chat)
+  chat_weather(chat)
