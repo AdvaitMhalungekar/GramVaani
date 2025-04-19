@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gramvaani - Agricultural Advisory</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='agri.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar - Same as main page -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo" class="logo-img">
+        </div>
+        <div class="logo-text">Gram<span class="accent">vaani</span></div>
+      </div>
+      <div class="header-actions">
+        <div class="language-mic-wrapper">
+          <div class="language-selector" onclick="toggleDropdown()">
+            <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
+          </div>
+          <button class="mic-navbar">
+            <i class="fas fa-microphone"></i>
+          </button>
+        </div>
+        <div class="language-dropdown" id="languageDropdown">
+          <div class="dropdown-item">English</div>
+          <div class="dropdown-item">हिन्दी</div>
+          <div class="dropdown-item">मराठी</div>
+          <div class="dropdown-item">தமிழ்</div>
+          <div class="dropdown-item">বাংলা</div>
+          <div class="dropdown-item">తెలుగు</div>
+          <div class="dropdown-item">ગુજરાતી</div>
+          <div class="dropdown-item">ଓଡ଼ିଆ</div>
+          <div class="dropdown-item">ಕನ್ನಡ</div>
+          <div class="dropdown-item">മലയാളം</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Agri Hero Section -->
+  <div class="agri-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">Home</a> <i class="fas fa-chevron-right"></i> <span>Agricultural Advisory</span>
+      </div>
+      <h1 class="agri-title">Agricultural Advisory</h1>
+    </div>
+  </div>
+
+  <div class="container main-content">
+    
+    <!-- Quick Access Buttons -->
+    <div class="quick-access">
+      <a href="#crop-recommendations" class="quick-access-btn">
+        <i class="fas fa-seedling"></i>
+        <span>Crop Recommendations</span>
+      </a>
+      <a href="#market-prices" class="quick-access-btn">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Market Prices</span>
+      </a>
+      <a href="#news" class="quick-access-btn">
+        <i class="fas fa-newspaper"></i>
+        <span>Agri News</span>
+      </a>
+      <a href="#vr-equipment" class="quick-access-btn vr-btn">
+        <i class="fas fa-vr-cardboard"></i>
+        <span>VR Equipment Guide</span>
+      </a>
+    </div>
+
+    <!-- Crop Recommendations Section -->
+    <section id="crop-recommendations" class="section">
+      <h2 class="section-title"><i class="fas fa-seedling"></i> Crop Recommendations</h2>
+      <p class="section-description">Based on current soil conditions, weather patterns, and market demand</p>
+      
+      <div class="crop-grid">
+        <div class="crop-card recommended">
+          <div class="crop-image">
+            <img src="{{ url_for('static', filename='assets/crops/rice.jpg') }}" alt="Rice">
+            <div class="recommendation-badge">Highly Recommended</div>
+          </div>
+          <div class="crop-details">
+            <h3>Rice (Paddy)</h3>
+            <div class="crop-info">
+              <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Sowing: May-June</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-tint"></i>
+                <span>Water: High</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-coins"></i>
+                <span>ROI: ₹60,000/hectare</span>
+              </div>
+            </div>
+            <p class="crop-description">With upcoming monsoon and favorable weather forecasts, paddy cultivation shows promising returns this season.</p>
+            <a href="#" class="crop-details-btn">Detailed Guide</a>
+          </div>
+        </div>
+        
+        <div class="crop-card">
+          <div class="crop-image">
+            <img src="{{ url_for('static', filename='assets/crops/cotton.jpg') }}" alt="Cotton">
+          </div>
+          <div class="crop-details">
+            <h3>Cotton</h3>
+            <div class="crop-info">
+              <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Sowing: April-May</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-tint"></i>
+                <span>Water: Medium</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-coins"></i>
+                <span>ROI: ₹45,000/hectare</span>
+              </div>
+            </div>
+            <p class="crop-description">Cotton prices expected to be stable. Moderate rainfall predicted makes it suitable for well-drained soils.</p>
+            <a href="#" class="crop-details-btn">Detailed Guide</a>
+          </div>
+        </div>
+        
+        <div class="crop-card">
+          <div class="crop-image">
+            <img src="{{ url_for('static', filename='assets/crops/moong.jpg') }}" alt="Moong Dal">
+          </div>
+          <div class="crop-details">
+            <h3>Moong Dal</h3>
+            <div class="crop-info">
+              <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Sowing: April-May</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-tint"></i>
+                <span>Water: Low</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-coins"></i>
+                <span>ROI: ₹35,000/hectare</span>
+              </div>
+            </div>
+            <p class="crop-description">Short-duration crop suitable for current season. Government MSP ensures good returns with low water requirement.</p>
+            <a href="#" class="crop-details-btn">Detailed Guide</a>
+          </div>
+        </div>
+        
+        <div class="crop-card recommended">
+          <div class="crop-image">
+            <img src="{{ url_for('static', filename='assets/crops/okra.jpg') }}" alt="Lady Finger (Okra)">
+            <div class="recommendation-badge">Highly Recommended</div>
+          </div>
+          <div class="crop-details">
+            <h3>Lady Finger (Okra)</h3>
+            <div class="crop-info">
+              <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Sowing: Year-round</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-tint"></i>
+                <span>Water: Medium</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-coins"></i>
+                <span>ROI: ₹80,000/hectare</span>
+              </div>
+            </div>
+            <p class="crop-description">High demand in local markets currently. Multiple harvests possible with current favorable temperature.</p>
+            <a href="#" class="crop-details-btn">Detailed Guide</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="view-all-container">
+        <a href="#" class="view-all-btn">View All Crop Recommendations <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+    
+    <!-- Market Prices Section -->
+    <section id="market-prices" class="section">
+      <h2 class="section-title"><i class="fas fa-rupee-sign"></i> Market Prices</h2>
+      <p class="section-description">Latest commodity prices from major agricultural markets (APMC)</p>
+      
+      <div class="market-filter">
+        <div class="market-select">
+          <label for="market-dropdown">Select Market:</label>
+          <select id="market-dropdown">
+            <option value="delhi">Delhi Azadpur Mandi</option>
+            <option value="mumbai">Mumbai APMC</option>
+            <option value="kolkata">Kolkata Wholesale Market</option>
+            <option value="chennai">Chennai APMC</option>
+            <option value="lucknow">Lucknow Mandi</option>
+          </select>
+        </div>
+        <div class="update-info">
+          <i class="fas fa-sync-alt"></i> Last Updated: April 19, 2025, 08:00 AM
+        </div>
+      </div>
+      
+      <div class="market-table-container">
+        <table class="market-table">
+          <thead>
+            <tr>
+              <th>Commodity</th>
+              <th>Variety</th>
+              <th>Min Price (₹/Q)</th>
+              <th>Max Price (₹/Q)</th>
+              <th>Modal Price (₹/Q)</th>
+              <th>Trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wheat</td>
+              <td>Desi</td>
+              <td>2,200</td>
+              <td>2,450</td>
+              <td>2,325</td>
+              <td class="trend-up"><i class="fas fa-arrow-up"></i> +2.5%</td>
+            </tr>
+            <tr>
+              <td>Rice</td>
+              <td>Basmati</td>
+              <td>3,800</td>
+              <td>4,200</td>
+              <td>4,000</td>
+              <td class="trend-up"><i class="fas fa-arrow-up"></i> +1.2%</td>
+            </tr>
+            <tr>
+              <td>Cotton</td>
+              <td>Long Staple</td>
+              <td>5,600</td>
+              <td>6,100</td>
+              <td>5,850</td>
+              <td class="trend-down"><i class="fas fa-arrow-down"></i> -0.8%</td>
+            </tr>
+            <tr>
+              <td>Moong Dal</td>
+              <td>Standard</td>
+              <td>7,800</td>
+              <td>8,400</td>
+              <td>8,100</td>
+              <td class="trend-stable"><i class="fas fa-equals"></i> 0%</td>
+            </tr>
+            <tr>
+              <td>Tomato</td>
+              <td>Local</td>
+              <td>1,200</td>
+              <td>1,800</td>
+              <td>1,500</td>
+              <td class="trend-up"><i class="fas fa-arrow-up"></i> +15%</td>
+            </tr>
+            <tr>
+              <td>Onion</td>
+              <td>Red</td>
+              <td>1,100</td>
+              <td>1,400</td>
+              <td>1,250</td>
+              <td class="trend-down"><i class="fas fa-arrow-down"></i> -5.2%</td>
+            </tr>
+            <tr>
+              <td>Potato</td>
+              <td>Chipsona</td>
+              <td>900</td>
+              <td>1,200</td>
+              <td>1,050</td>
+              <td class="trend-stable"><i class="fas fa-equals"></i> +0.3%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="price-analysis">
+        <h3><i class="fas fa-chart-line"></i> Price Analysis</h3>
+        <div class="analysis-content">
+          <p><strong>Rising:</strong> Tomato prices continue to rise due to seasonal scarcity. Wheat shows steady increase with government procurement ongoing.</p>
+          <p><strong>Falling:</strong> Onion prices declining as new harvest reaches markets. Cotton showing slight downward trend due to international market pressure.</p>
+          <p><strong>Stable:</strong> Pulses markets remain stable with consistent demand and supply balance. Government buffer stocks maintaining price equilibrium.</p>
+        </div>
+      </div>
+      
+      <div class="market-actions">
+        <a href="#" class="market-action-btn">
+          <i class="fas fa-download"></i> Download Price List
+        </a>
+        <a href="#" class="market-action-btn">
+          <i class="fas fa-history"></i> Price History
+        </a>
+        <a href="#" class="market-action-btn">
+          <i class="fas fa-bell"></i> Set Price Alert
+        </a>
+      </div>
+    </section>
+
+    <div class="content-wrapper">
+      <!-- Agri News Section -->
+      <section id="news" class="news-section">
+        <h2 class="section-title"><i class="fas fa-newspaper"></i> Agricultural News</h2>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-tractor"></i>
+          </div>
+          <div class="news-content">
+            <h3 class="news-title">New Farm Bill to be Introduced Next Month</h3>
+            <p class="news-preview">The government plans to introduce a new farm bill focusing on sustainable agriculture and improved MSP calculation formulas.</p>
+            <p class="news-date">April 18, 2025</p>
+          </div>
+        </div>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-cloud-rain"></i>
+          </div>
+          <div class="news-content">
+            <h3 class="news-title">Monsoon Expected to Arrive Early This Year</h3>
+            <p class="news-preview">Meteorological department predicts monsoon to begin two weeks earlier than usual. Farmers advised to prepare fields accordingly.</p>
+            <p class="news-date">April 17, 2025</p>
+          </div>
+        </div>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="news-content">
+            <h3 class="news-title">New Drought-Resistant Rice Variety Released</h3>
+            <p class="news-preview">Agricultural University develops new rice variety that requires 40% less water while maintaining yield levels.</p>
+            <p class="news-date">April 15, 2025</p>
+          </div>
+        </div>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <div class="news-content">
+            <h3 class="news-title">Agri Export Reaches New High</h3>
+            <p class="news-preview">Agricultural exports cross ₹5 trillion mark for the first time. Basmati rice and spices lead the growth.</p>
+            <p class="news-date">April 14, 2025</p>
+          </div>
+        </div>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <i class="fas fa-bug"></i>
+          </div>
+          <div class="news-content">
+            <h3 class="news-title">Locust Alert in Western Regions</h3>
+            <p class="news-preview">Early warning issued for potential locust swarms in western states. Preventive measures advised.</p>
+            <p class="news-date">April 12, 2025</p>
+          </div>
+        </div>
+        
+        <div class="view-all-container">
+          <a href="#" class="view-all-btn">View All News <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </section>
+      
+      <!-- VR Equipment Guide Section -->
+      <section id="vr-equipment" class="vr-section">
+        <div class="vr-header">
+          <h2><i class="fas fa-vr-cardboard"></i> VR Equipment Guide</h2>
+          <p>Explore farm equipment in virtual reality</p>
+        </div>
+        
+        <div class="vr-preview">
+          <img src="{{ url_for('static', filename='assets/vr-preview.jpg') }}" alt="VR Equipment Preview" class="vr-image">
+          <div class="vr-overlay">
+            <i class="fas fa-play-circle"></i>
+          </div>
+        </div>
+        
+        <div class="vr-equipment-list">
+          <h3>Available Equipment Guides</h3>
+          <div class="equipment-items">
+            <div class="equipment-item active">
+              <div class="equipment-icon">
+                <i class="fas fa-tractor"></i>
+              </div>
+              <div class="equipment-info">
+                <h4>Modern Tractors</h4>
+                <p>Interactive guide for operating new tractor models</p>
+              </div>
+            </div>
+            
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fas fa-spray-can"></i>
+              </div>
+              <div class="equipment-info">
+                <h4>Sprayers</h4>
+                <p>Learn safe & efficient pesticide application techniques</p>
+              </div>
+            </div>
+            
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fas fa-wheat-awn"></i>
+              </div>
+              <div class="equipment-info">
+                <h4>Harvesters</h4>
+                <p>Operation & maintenance of combine harvesters</p>
+              </div>
+            </div>
+            
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="equipment-info">
+                <h4>Seed Drills</h4>
+                <p>Precision seeding techniques for higher germination</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="vr-actions">
+          <a href="#" class="vr-action-btn primary">
+            <i class="fas fa-vr-cardboard"></i> Start VR Experience
+          </a>
+          <a href="#" class="vr-action-btn secondary">
+            <i class="fas fa-mobile-alt"></i> Mobile Version
+          </a>
+          <a href="#" class="vr-action-btn secondary">
+            <i class="fas fa-download"></i> Download Guides
+          </a>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Chat Bot Section -->
+    <section class="chatbot-section">
+      <div class="chatbot-container">
+        <div class="chatbot-header">
+          <h2><i class="fas fa-robot"></i> Krishi Salahkar (Farm Advisor)</h2>
+          <p>Get personalized agricultural advice and answers to your farming questions</p>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot-message">
+            <div class="message-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+              Namaste! I'm your Krishi Salahkar. I can help with crop selection, pest management, fertilizer recommendations, and market information. How can I assist you today?
+            </div>
+          </div>
+          
+          <div class="message user-message">
+            <div class="message-content">
+              What fertilizer should I use for wheat crops?
+            </div>
+            <div class="message-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+          
+          <div class="message bot-message">
+            <div class="message-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+              For wheat crops, I recommend applying NPK (12:32:16) at the rate of 100 kg/hectare during sowing. Follow up with urea (46:0:0) at 50 kg/hectare after 30 days. This balance supports both initial root development and later grain formation. Current soil moisture levels in your area are suitable for this application.
+            </div>
+          </div>
+        </div>
+        
+        <div class="chat-input">
+          <button id="micButton" title="Speak your question">
+            <i class="fas fa-microphone"></i>
+          </button>
+          <input type="text" id="userMessage" placeholder="Ask about crops, fertilizers, market prices, or farming techniques...">
+          <button id="sendMessage">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        
+        <div class="quick-questions">
+          <div class="quick-question-btn">When should I harvest wheat?</div>
+          <div class="quick-question-btn">Best pesticide for cotton?</div>
+          <div class="quick-question-btn">How to prevent rice blast?</div>
+          <div class="quick-question-btn">Current MSP for maize?</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer - Same as main page -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo" class="footer-logo-img">
+          <span>Gramvaani</span>
+        </div>
+        <p class="footer-tagline">Voice of the Village</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mic-button">
+    <div class="pulse-ring"></div>
+    <div class="mic-icon">
+      <i class="fas fa-microphone"></i>
+    </div>
+    <div class="mic-tooltip">Tap to speak</div>
+  </div>
+
+  <script>
+    // Language dropdown toggle
+    function toggleDropdown() {
+      const dropdown = document.getElementById('languageDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    window.addEventListener('click', function (e) {
+      const langSelector = document.querySelector('.language-selector');
+      const dropdown = document.getElementById('languageDropdown');
+      if (!langSelector.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    // Simple chatbot functionality
+    document.getElementById('sendMessage').addEventListener('click', function() {
+      sendMessage();
+    });
+
+    document.getElementById('userMessage').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // Quick question buttons
+    const quickQuestions = document.querySelectorAll('.quick-question-btn');
+    quickQuestions.forEach(button => {
+      button.addEventListener('click', function() {
+        const question = this.textContent;
+        document.getElementById('userMessage').value = question;
+        sendMessage();
+      });
+    });
+
+    function sendMessage() {
+      const userInput = document.getElementById('userMessage');
+      const message = userInput.value.trim();
+      
+      if (message) {
+        // Add user message
+        addMessage(message, 'user');
+        
+        // Clear input
+        userInput.value = '';
+        
+        // Simulate bot response (in real app, this would call your API)
+        setTimeout(() => {
+          const botResponses = {
+            "When should I harvest wheat?": "Based on current crop conditions and weather forecast, the ideal time for wheat harvesting in your region would be in the next 7-10 days. Look for golden-yellow color in the crop and grain hardness test. Moisture content should be below 14% for optimal storage.",
+            "Best pesticide for cotton?": "For the current bollworm infestation in cotton crops in your area, I recommend using Spinosad 45% SC at 0.5 ml/liter of water. It's effective against bollworms while being relatively safer for beneficial insects. Always wear protective gear during application.",
+            "How to prevent rice blast?": "For preventing rice blast disease, especially with the current humid conditions, use seed treatment with Tricyclazole 75% WP before sowing. For standing crops, spray Isoprothiolane 40% EC at 1.5 ml/liter of water. Maintain proper field drainage and balanced fertilizer application.",
+            "Current MSP for maize?": "The current Minimum Support Price (MSP) for maize is ₹2,090 per quintal for the 2024-25 marketing season. Government procurement centers in your district are operational at Bhiwani and Rohtak mandis with direct bank transfers within 3 days."
+          };
+          
+          let botReply = botResponses[message] || "Thank you for your question. Let me analyze the current agricultural data for your region to provide the most accurate advice. Based on your soil type, current weather patterns, and market trends, I would recommend focusing on efficient water management techniques in the coming weeks given the expected weather changes.";
+          
+          addMessage(botReply, 'bot');
+        }, 1000);
+      }
+    }
+
+    function addMessage(text, sender) {
+      const chatMessages = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}-message`;
+      
+      if (sender === 'bot') {
+        messageDiv.innerHTML = `
+          <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="message-content">
+            ${text}
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="message-content">
+            ${text}
+          </div>
+          <div class="message-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+        `;
+      }
+      
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // VR Equipment interaction
+    const equipmentItems = document.querySelectorAll('.equipment-item');
+    equipmentItems.forEach(item => {
+      item.addEventListener('click', function() {
+        equipmentItems.forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

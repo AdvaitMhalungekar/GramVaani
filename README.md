@@ -28,7 +28,7 @@ Built under the theme **"Smart Bharat"**, GramVaani is an intelligent assistant 
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Python Flask
-- **AI & NLP**: Dialogflow, Mistral/LLaMA
+- **AI & NLP**: Dialogflow, Gemini
 - **APIs**: OpenWeatherMap, Govt Schemes DB
 - **Image Processing**: YOLOv10 / OpenCV
 - **Speech**: Google Text-to-Speech / espeak (for embedded devices)
