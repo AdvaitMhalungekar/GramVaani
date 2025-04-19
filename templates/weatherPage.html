@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
   <!-- Navbar - Same as main page -->
   <nav class="navbar">
@@ -59,161 +61,139 @@
     {% for day in weather_data %}
     {% if day.date %}
     <div class="weather-card">
-        <!-- Day Summary Card -->
-        <div class="day-summary" onclick="toggleHourly('{{ loop.index }}')">
-            <div class="day-info">
-                <div class="day-date">{{ day.date }}</div>
-                <div class="day-condition">
-                    <img src="{{ day.icon }}" alt="{{ day.condition }}">
-                    <span>{{ day.condition }}</span>
-                </div>
-                <div class="day-temp">
-                    <span class="temp-max">{{ day.max_temp_c }}°C</span>
-                    <span class="temp-range">|</span>
-                    <span class="temp-min">{{ day.min_temp_c }}°C</span>
-                </div>
-                <div class="sun-info">
-                    <div><span class="sun-icon">🌅</span> {{ day.sunrise }}</div>
-                    <div><span class="sun-icon">🌇</span> {{ day.sunset }}</div>
-                </div>
-                <div class="expand-icon">
-                    <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
-            </div>
+      <!-- Day Summary Card -->
+      <div class="day-summary" onclick="toggleHourly('{{ loop.index }}')">
+        <div class="day-info">
+          <div class="day-date">{{ day.date }}</div>
+          <div class="day-condition">
+            <img src="{{ day.icon }}" alt="{{ day.condition }}">
+            <span>{{ day.condition }}</span>
+          </div>
+          <div class="day-temp">
+            <span class="temp-max">{{ day.max_temp_c }}°C</span>
+            <span class="temp-range">|</span>
+            <span class="temp-min">{{ day.min_temp_c }}°C</span>
+          </div>
+          <div class="sun-info">
+            <div><span class="sun-icon">🌅</span> {{ day.sunrise }}</div>
+            <div><span class="sun-icon">🌇</span> {{ day.sunset }}</div>
+          </div>
+          <div class="expand-icon">
+            <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
         </div>
-        
-        <!-- Hourly Data (Hidden by Default) -->
-        <div class="hourly-container" id="hourly-{{ loop.index }}">
-            <div class="hourly-scroll">
-                {% for hour in day.hourly_data %}
-                <div class="hour-card">
-                    <div class="hour-time">{{ hour.time.split(' ')[1] }}</div>
-                    <div class="hour-icon">
-                        <img src="{{ hour.icon }}" alt="{{ hour.condition }}">
-                    </div>
-                    <div class="hour-temp">{{ hour.temp_c }}°C</div>
-                    <div class="hour-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">💨</span>
-                            <span>{{ hour.wind_kph }} kph</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">💧</span>
-                            <span>{{ hour.humidity }}%</span>
-                        </div>
-                    </div>
-                    <div class="air-quality">
-                        <div class="aq-title">Air Quality</div>
-                        <div class="aq-values">
-                            <span>PM2.5: {{ hour.air_quality.pm2_5 }}</span>
-                            <span>PM10: {{ hour.air_quality.pm10 }}</span>
-                            <span>CO: {{ hour.air_quality.co }}</span>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+      </div>
+
+      <!-- Hourly Data (Hidden by Default) -->
+      <div class="hourly-container" id="hourly-{{ loop.index }}">
+        <div class="hourly-scroll">
+          {% for hour in day.hourly_data %}
+          <div class="hour-card">
+            <div class="hour-time">{{ hour.time.split(' ')[1] }}</div>
+            <div class="hour-icon">
+              <img src="{{ hour.icon }}" alt="{{ hour.condition }}">
             </div>
+            <div class="hour-temp">{{ hour.temp_c }}°C</div>
+            <div class="hour-details">
+              <div class="detail-item">
+                <span class="detail-icon">💨</span>
+                <span>{{ hour.wind_kph }} kph</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">💧</span>
+                <span>{{ hour.humidity }}%</span>
+              </div>
+            </div>
+            <div class="air-quality">
+              <div class="aq-title">Air Quality</div>
+              <div class="aq-values">
+                <span>PM2.5: {{ hour.air_quality.pm2_5 }}</span>
+                <span>PM10: {{ hour.air_quality.pm10 }}</span>
+                <span>CO: {{ hour.air_quality.co }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
         </div>
+      </div>
     </div>
     {% endif %}
-{% endfor %}
+    {% endfor %}
 
     <!-- Weather Alerts -->
     <div class="weather-alerts">
       <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Weather Alerts</h2>
-      
-      <div class="alert-card alert-high">
+
+      {% if weather_alerts and weather_alerts|length > 0 %}
+      {% for alert in weather_alerts %}
+      <div class="alert-card {{ alert.severity }}">
         <div class="alert-icon">
-          <i class="fas fa-bolt"></i>
+          <i class="{{ alert.icon }}"></i>
         </div>
         <div class="alert-content">
-          <h3 class="alert-title">Heavy Thunderstorm Warning</h3>
-          <p class="alert-message">Heavy thunderstorms expected between 5 PM and 9 PM today. Possibility of lightning strikes and flash floods in low-lying areas.</p>
-          <p class="alert-time">Issued: 10:30 AM, April 19, 2025</p>
+          <h3 class="alert-title">{{ alert.title }}</h3>
+          <p class="alert-message">{{ alert.message }}</p>
+          <p class="alert-time">Issued: {{ alert.issued_time }}</p>
         </div>
       </div>
-      
-      <div class="alert-card alert-medium">
-        <div class="alert-icon">
-          <i class="fas fa-temperature-high"></i>
-        </div>
-        <div class="alert-content">
-          <h3 class="alert-title">Heat Advisory</h3>
-          <p class="alert-message">Temperatures expected to reach 38°C during peak afternoon hours. Stay hydrated and avoid prolonged exposure to direct sunlight.</p>
-          <p class="alert-time">Issued: 8:00 AM, April 19, 2025</p>
-        </div>
+      {% endfor %}
+      {% else %}
+      <div class="no-alerts">
+        <p>No current weather alerts for your region.</p>
       </div>
+      {% endif %}
     </div>
 
     <div class="content-wrapper">
       <!-- News Section -->
       <div class="news-section">
         <h2 class="section-title"><i class="fas fa-newspaper"></i> Weather News</h2>
-        
+
+        {% if weather_news %}
+        {% for news in weather_news %}
         <div class="news-card">
           <div class="news-image">
-            <i class="fas fa-cloud-rain"></i>
+            {% set icons = ['fa-cloud-rain', 'fa-sun', 'fa-wind', 'fa-cloud-bolt', 'fa-temperature-high', 'fa-umbrella',
+            'fa-smog'] %}
+            <i class="fas {{ icons[loop.index0 % icons|length] }}"></i>
           </div>
           <div class="news-content">
-            <h3 class="news-title">Monsoon Expected Early This Year</h3>
-            <p class="news-preview">Meteorological department predicts monsoon arrival two weeks earlier than usual. Farmers advised to prepare fields accordingly.</p>
-            <p class="news-date">April 18, 2025</p>
+            <h3 class="news-title">{{ news.title }}</h3>
+            <p class="news-preview">{{ news.description if news.description else 'Click to read more about this news
+              article.' }}</p>
+            <p class="news-date">{{ news.pubDate }}</p>
+            <a href="{{ news.link }}" target="_blank" class="news-link">Read more</a>
           </div>
         </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-seedling"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">New Drought-Resistant Seeds Available</h3>
-            <p class="news-preview">Government releases new drought-resistant wheat variety. Distribution centers set up in all districts.</p>
-            <p class="news-date">April 17, 2025</p>
-          </div>
+        {% endfor %}
+        {% else %}
+        <div class="no-news">
+          <p>No weather news available at the moment.</p>
         </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-tractor"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Farm Equipment Subsidy Announced</h3>
-            <p class="news-preview">New subsidy program for weather-resistant farming equipment announced. Applications open next week.</p>
-            <p class="news-date">April 15, 2025</p>
-          </div>
-        </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-hand-holding-water"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Water Conservation Drive Begins</h3>
-            <p class="news-preview">Local authorities launch water conservation initiative in preparation for summer months. Free rainwater harvesting training available.</p>
-            <p class="news-date">April 14, 2025</p>
-          </div>
-        </div>
+        {% endif %}
       </div>
-      
+
       <!-- Chatbot Section -->
       <div class="chatbot-container">
         <div class="chatbot-header">
           <h2><i class="fas fa-robot"></i> Farm Advisor</h2>
           <p>Get personalized recommendations based on weather</p>
         </div>
-        
+
         <div class="chat-messages" id="chatMessages">
           <div class="message bot-message">
             <div class="message-avatar">
               <i class="fas fa-robot"></i>
             </div>
             <div class="message-content">
-              Hello! I'm your farm advisor. Based on today's weather forecast, I can help you plan your agricultural activities. What would you like to know?
+              Hello! I'm your farm advisor. Based on today's weather forecast, I can help you plan your agricultural
+              activities. What would you like to know?
             </div>
           </div>
-          
+
           <div class="message user-message">
             <div class="message-content">
               What crops are good to plant now?
@@ -222,28 +202,30 @@
               <i class="fas fa-user"></i>
             </div>
           </div>
-          
+
           <div class="message bot-message">
             <div class="message-avatar">
               <i class="fas fa-robot"></i>
             </div>
             <div class="message-content">
-              With the current weather conditions and expected rain later this week, it's a good time to plant legumes like moong dal or vegetables like okra and gourds. They will benefit from the warm temperature and upcoming moisture.
+              With the current weather conditions and expected rain later this week, it's a good time to plant legumes
+              like moong dal or vegetables like okra and gourds. They will benefit from the warm temperature and
+              upcoming moisture.
             </div>
           </div>
         </div>
-        
+
         <div class="chat-input">
-            <button id="micButton" title="Speak your question">
-              <i class="fas fa-microphone"></i>
-            </button>
-            <input type="text" id="userMessage" placeholder="Ask about weather-related farm advice...">
-            <button id="sendMessage">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </div>
-          
-        
+          <button id="micButton" title="Speak your question">
+            <i class="fas fa-microphone"></i>
+          </button>
+          <input type="text" id="userMessage" placeholder="Ask about weather-related farm advice...">
+          <button id="sendMessage">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+
+
         <div class="quick-questions">
           <div class="quick-question-btn">Is it good to irrigate today?</div>
           <div class="quick-question-btn">When should I harvest my wheat?</div>
@@ -281,25 +263,24 @@
   </div>
 
   <script>
+    function toggleHourly(index) {
+      const weatherCard = document.getElementById('hourly-' + index).parentElement;
+      weatherCard.classList.toggle('expanded');
 
-function toggleHourly(index) {
-        const weatherCard = document.getElementById('hourly-' + index).parentElement;
-        weatherCard.classList.toggle('expanded');
-        
-        const hourlyContainer = document.getElementById('hourly-' + index);
-        if (weatherCard.classList.contains('expanded')) {
-            hourlyContainer.style.display = 'block';
-            setTimeout(() => {
-                hourlyContainer.style.maxHeight = hourlyContainer.scrollHeight + 'px';
-            }, 10);
-        } else {
-            hourlyContainer.style.maxHeight = '0px';
-            setTimeout(() => {
-                hourlyContainer.style.display = 'none';
-            }, 500);
-        }
+      const hourlyContainer = document.getElementById('hourly-' + index);
+      if (weatherCard.classList.contains('expanded')) {
+        hourlyContainer.style.display = 'block';
+        setTimeout(() => {
+          hourlyContainer.style.maxHeight = hourlyContainer.scrollHeight + 'px';
+        }, 10);
+      } else {
+        hourlyContainer.style.maxHeight = '0px';
+        setTimeout(() => {
+          hourlyContainer.style.display = 'none';
+        }, 500);
+      }
     }
-    
+
     // Language dropdown toggle
     function toggleDropdown() {
       const dropdown = document.getElementById('languageDropdown');
@@ -315,11 +296,11 @@ function toggleHourly(index) {
     });
 
     // Simple chatbot functionality
-    document.getElementById('sendMessage').addEventListener('click', function() {
+    document.getElementById('sendMessage').addEventListener('click', function () {
       sendMessage();
     });
 
-    document.getElementById('userMessage').addEventListener('keypress', function(e) {
+    document.getElementById('userMessage').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
         sendMessage();
       }
@@ -328,7 +309,7 @@ function toggleHourly(index) {
     // Quick question buttons
     const quickQuestions = document.querySelectorAll('.quick-question-btn');
     quickQuestions.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function () {
         const question = this.textContent;
         document.getElementById('userMessage').value = question;
         sendMessage();
@@ -338,27 +319,30 @@ function toggleHourly(index) {
     function sendMessage() {
       const userInput = document.getElementById('userMessage');
       const message = userInput.value.trim();
-      
+
       if (message) {
         // Add user message
         addMessage(message, 'user');
-        
+
         // Clear input
         userInput.value = '';
-        
-        // Simulate bot response (in real app, this would call your API)
-        setTimeout(() => {
-          const botResponses = {
-            "What crops are good to plant now?": "With the current weather conditions and expected rain later this week, it's a good time to plant legumes like moong dal or vegetables like okra and gourds.",
-            "Is it good to irrigate today?": "Given the high temperatures today and forecasted rain tomorrow, it's better to hold off on irrigation. Save water and let the natural rainfall do its job.",
-            "When should I harvest my wheat?": "Based on current humidity levels and the forecast, it's advisable to harvest in the next 3-4 days before the heavy rains arrive to avoid grain damage.",
-            "Should I apply pesticides now?": "With thunderstorms expected this evening, it's not ideal to apply pesticides today as they will wash away. Wait for a clear day with low wind conditions."
-          };
-          
-          let botReply = botResponses[message] || "I'll need to analyze the current weather patterns to give you advice on this. Based on the forecast, you might want to consider postponing outdoor farm activities until after the thunderstorm passes.";
-          
-          addMessage(botReply, 'bot');
-        }, 1000);
+
+        // Send to API
+        fetch('/chat_weather', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `message=${encodeURIComponent(message)}`
+        })
+          .then(response => response.json())
+          .then(data => {
+            addMessage(data.response, 'bot');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            addMessage("Sorry, I couldn't process your request.", 'bot');
+          });
       }
     }
 
@@ -366,7 +350,7 @@ function toggleHourly(index) {
       const chatMessages = document.getElementById('chatMessages');
       const messageDiv = document.createElement('div');
       messageDiv.className = `message ${sender}-message`;
-      
+
       if (sender === 'bot') {
         messageDiv.innerHTML = `
           <div class="message-avatar">
@@ -386,10 +370,11 @@ function toggleHourly(index) {
           </div>
         `;
       }
-      
+
       chatMessages.appendChild(messageDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
   </script>
 </body>
+
 </html>

@@ -14,13 +14,12 @@ generation_config = {
   "max_output_tokens": 8192,
   "response_mime_type": "text/plain",
 }
-def chat_weather(chat, return_text=False):
+def chat_health(chat, return_text=False):
     weather_data = get_weather_data("Kolhapur")
     model = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
-        
-        system_instruction=f"This is weather forecast for next 3 days :\n{weather_data}\nyou have to answer questions based on this data in short",
+        system_instruction=f"You are a health advisor chatbot. User will tell about their health issues and you have to provide them preventive measures and console them. You dont have to do the work of doctor. Just help them with home remedies and suggest to see a doctor. Talk in short as if you are chating",
     )
     history.append({
         "role": "user",
@@ -39,4 +38,4 @@ def chat_weather(chat, return_text=False):
         return response.text
     else:
         print(response.text)
-        return response.text
+        

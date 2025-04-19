@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gramvaani Healthcare Information Portal - Access local healthcare facilities, health alerts, and preventative care information">
+  <meta name="description"
+    content="Gramvaani Healthcare Information Portal - Access local healthcare facilities, health alerts, and preventative care information">
   <title>Gramvaani - Healthcare</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='health.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -11,48 +13,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
+
 <body>
   <!-- Navbar with improved accessibility -->
   <nav class="navbar">
     <div class="container nav-container">
-        <div class="logo">
-            <div class="logo-icon">
-                <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo"
-                    class="logo-img">
-            </div>
-            <div class="logo-text">Gram<span class="accent">vaani</span></div>
+      <div class="logo">
+        <div class="logo-icon">
+          <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo" class="logo-img">
         </div>
-        <div class="header-actions">
-            <div class="language-mic-wrapper">
-                <div class="language-selector" onclick="toggleDropdown()">
-                    <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
-                </div>
-                <button class="mic-navbar">
-                    <i class="fas fa-microphone"></i>
-                </button>
-            </div>
-            <div class="language-dropdown" id="languageDropdown">
-                <div class="dropdown-item">English</div>
-                <div class="dropdown-item">हिन्दी</div>
-                <div class="dropdown-item">मराठी</div>
-                <div class="dropdown-item">தமிழ்</div>
-                <div class="dropdown-item">বাংলা</div>
-                <div class="dropdown-item">తెలుగు</div>
-                <div class="dropdown-item">ગુજરાતી</div>
-                <div class="dropdown-item">ଓଡ଼ିଆ</div>
-                <div class="dropdown-item">ಕನ್ನಡ</div>
-                <div class="dropdown-item">മലയാളം</div>
-            </div>
+        <div class="logo-text">Gram<span class="accent">vaani</span></div>
+      </div>
+      <div class="header-actions">
+        <div class="language-mic-wrapper">
+          <div class="language-selector" onclick="toggleDropdown()">
+            <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
+          </div>
+          <button class="mic-navbar">
+            <i class="fas fa-microphone"></i>
+          </button>
         </div>
+        <div class="language-dropdown" id="languageDropdown">
+          <div class="dropdown-item">English</div>
+          <div class="dropdown-item">हिन्दी</div>
+          <div class="dropdown-item">मराठी</div>
+          <div class="dropdown-item">தமிழ்</div>
+          <div class="dropdown-item">বাংলা</div>
+          <div class="dropdown-item">తెలుగు</div>
+          <div class="dropdown-item">ગુજરાતી</div>
+          <div class="dropdown-item">ଓଡ଼ିଆ</div>
+          <div class="dropdown-item">ಕನ್ನಡ</div>
+          <div class="dropdown-item">മലയാളം</div>
+        </div>
+      </div>
     </div>
-</nav>
+  </nav>
 
   <!-- Improved Healthcare Hero Section -->
   <div class="healthcare-hero">
     <div class="container">
       <nav aria-label="Breadcrumb">
         <div class="breadcrumb">
-          <a href="/">Home</a> <i class="fas fa-chevron-right" aria-hidden="true"></i> <span aria-current="page">Healthcare</span>
+          <a href="/">Home</a> <i class="fas fa-chevron-right" aria-hidden="true"></i> <span
+            aria-current="page">Healthcare</span>
         </div>
       </nav>
       <h1 class="healthcare-title">Healthcare Information</h1>
@@ -62,8 +65,9 @@
   <main class="container main-content">
     <!-- Local Healthcare Facilities with improved map -->
     <section class="healthcare-facilities" aria-labelledby="facilities-heading">
-      <h2 class="section-title" id="facilities-heading"><i class="fas fa-hospital" aria-hidden="true"></i> Local Healthcare Facilities</h2>
-      
+      <h2 class="section-title" id="facilities-heading"><i class="fas fa-hospital" aria-hidden="true"></i> Local
+        Healthcare Facilities</h2>
+
       <div class="facilities-map-container">
         <div id="map" aria-label="Map of local healthcare facilities">
           <div id="map-loading" class="map-loading">
@@ -71,55 +75,9 @@
           </div>
         </div>
       </div>
-      
+
       <div class="facilities-list" role="list">
-        <div class="facility-card" role="listitem">
-          <div class="facility-icon" aria-hidden="true">
-            <i class="fas fa-hospital-alt"></i>
-          </div>
-          <div class="facility-content">
-            <h3 class="facility-name">District General Hospital</h3>
-            <p class="facility-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Main Road, District Center</p>
-            <p class="facility-contact"><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:0123-456789">0123-456789</a></p>
-            <div class="facility-services" aria-label="Services offered">
-              <span class="service-tag">24/7 Emergency</span>
-              <span class="service-tag">Surgery</span>
-              <span class="service-tag">Maternity</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="facility-card" role="listitem">
-          <div class="facility-icon" aria-hidden="true">
-            <i class="fas fa-clinic-medical"></i>
-          </div>
-          <div class="facility-content">
-            <h3 class="facility-name">Primary Health Center</h3>
-            <p class="facility-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Village Road, Near Temple</p>
-            <p class="facility-contact"><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:0123-567890">0123-567890</a></p>
-            <div class="facility-services" aria-label="Services offered">
-              <span class="service-tag">General Medicine</span>
-              <span class="service-tag">Vaccination</span>
-              <span class="service-tag">Child Health</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="facility-card" role="listitem">
-          <div class="facility-icon" aria-hidden="true">
-            <i class="fas fa-stethoscope"></i>
-          </div>
-          <div class="facility-content">
-            <h3 class="facility-name">Ayushman Medical Center</h3>
-            <p class="facility-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Market Road, Block B</p>
-            <p class="facility-contact"><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:0123-678901">0123-678901</a></p>
-            <div class="facility-services" aria-label="Services offered">
-              <span class="service-tag">Ayushman Bharat</span>
-              <span class="service-tag">Diagnostics</span>
-              <span class="service-tag">Pharmacy</span>
-            </div>
-          </div>
-        </div>
+        <!-- Facilities will be dynamically loaded here -->
       </div>
     </section>
 
@@ -131,7 +89,7 @@
             <h2 id="health-advisor-heading"><i class="fas fa-heartbeat" aria-hidden="true"></i> Health Advisor</h2>
             <p>Get personalized preventative healthcare recommendations</p>
           </div>
-          
+
           <div class="chat-messages" id="chatMessages" aria-live="polite">
             <div class="message bot-message">
               <div class="message-avatar" aria-hidden="true">
@@ -139,31 +97,12 @@
               </div>
               <div class="message-content">
                 <span class="sr-only">Health Advisor says:</span>
-                Hello! I'm your health advisor. I can help you with preventative healthcare advice and general health information. What would you like to know?
-              </div>
-            </div>
-            
-            <div class="message user-message">
-              <div class="message-content">
-                <span class="sr-only">You said:</span>
-                What preventive measures should I take during flu season?
-              </div>
-              <div class="message-avatar" aria-hidden="true">
-                <i class="fas fa-user"></i>
-              </div>
-            </div>
-            
-            <div class="message bot-message">
-              <div class="message-avatar" aria-hidden="true">
-                <i class="fas fa-user-md"></i>
-              </div>
-              <div class="message-content">
-                <span class="sr-only">Health Advisor says:</span>
-                During flu season, I recommend getting your annual flu vaccination, washing hands frequently, avoiding close contact with sick individuals, and maintaining a healthy diet with plenty of vitamin C. Also ensure adequate sleep and stay hydrated.
+                Hello! I'm your health advisor. I can help you with preventative healthcare advice and general health
+                information. What would you like to know?
               </div>
             </div>
           </div>
-          
+
           <div class="chat-input" role="form" aria-label="Chat message form">
             <button id="micButton" aria-label="Speak your question" title="Speak your question">
               <i class="fas fa-microphone" aria-hidden="true"></i>
@@ -173,7 +112,7 @@
               <i class="fas fa-paper-plane" aria-hidden="true"></i>
             </button>
           </div>
-          
+
           <div class="quick-questions" role="list" aria-label="Suggested questions">
             <button class="quick-question-btn" role="listitem">How to prevent diabetes?</button>
             <button class="quick-question-btn" role="listitem">Recommended vaccines for children?</button>
@@ -181,133 +120,228 @@
           </div>
         </div>
       </section>
-      
+
       <!-- News Section with improved structure -->
       <section class="news-section" aria-labelledby="health-news-heading">
-        <h2 class="section-title" id="health-news-heading"><i class="fas fa-newspaper" aria-hidden="true"></i> Health News</h2>
-        
+        <h2 class="section-title" id="health-news-heading"><i class="fas fa-newspaper" aria-hidden="true"></i> Health
+          News</h2>
+
+        {% if news %}
+        {% for article in news %}
         <article class="news-card">
           <div class="news-image" aria-hidden="true">
-            <i class="fas fa-syringe"></i>
+            <i
+              class="fas fa-{% if 'vaccine' in article.title|lower %}syringe{% elif 'medicine' in article.title|lower %}pills{% elif 'mental health' in article.title|lower %}brain{% else %}heartbeat{% endif %}"></i>
           </div>
           <div class="news-content">
-            <h3 class="news-title">New Vaccination Drive Launched</h3>
-            <p class="news-preview">Health Ministry launches comprehensive vaccination drive for children under 5 years. Mobile units to reach remote villages.</p>
-            <p class="news-date"><time datetime="2025-04-18">April 18, 2025</time></p>
+            <h3 class="news-title">{{ article.title }}</h3>
+            <p class="news-preview">{{ article.descripion }}</p>
+            <p class="news-date">
+              <time datetime="{{ article.pubDate.split(' ')[0] }}">{{ article.pubDate.split(' ')[0] }}</time>
+              <a href="{{ article.link }}" target="_blank" class="read-more">Read more <i
+                  class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+            </p>
           </div>
         </article>
-        
+        {% endfor %}
+        {% else %}
         <article class="news-card">
           <div class="news-image" aria-hidden="true">
-            <i class="fas fa-pills"></i>
+            <i class="fas fa-newspaper"></i>
           </div>
           <div class="news-content">
-            <h3 class="news-title">Generic Medicine Stores Expanded</h3>
-            <p class="news-preview">Government expands network of Jan Aushadhi stores providing affordable generic medicines. 50 new stores to open in rural areas.</p>
-            <p class="news-date"><time datetime="2025-04-16">April 16, 2025</time></p>
+            <h3 class="news-title">News currently unavailable</h3>
+            <p class="news-preview">We're having trouble fetching the latest health news. Please check back later.</p>
           </div>
         </article>
-        
-        <article class="news-card">
-          <div class="news-image" aria-hidden="true">
-            <i class="fas fa-heartbeat"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Free Health Check-up Camps</h3>
-            <p class="news-preview">District administration organizing free health screening camps. Services include blood pressure, blood sugar, and basic eye check-ups.</p>
-            <p class="news-date"><time datetime="2025-04-14">April 14, 2025</time></p>
-          </div>
-        </article>
-        
-        <article class="news-card">
-          <div class="news-image" aria-hidden="true">
-            <i class="fas fa-brain"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Mental Health Awareness Program</h3>
-            <p class="news-preview">New initiative focuses on mental health awareness in rural communities. Free counseling services available at primary health centers.</p>
-            <p class="news-date"><time datetime="2025-04-12">April 12, 2025</time></p>
-          </div>
-        </article>
+        {% endif %}
       </section>
     </div>
   </main>
 
-  <!-- Footer with improved accessibility -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo" class="footer-logo-img">
-          <span>Gramvaani</span>
-        </div>
-        <p class="footer-tagline">Voice of the Village</p>
-      </div>
-      <div class="footer-links">
-        <a href="#">About Us</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Contact</a>
-        <a href="#">Help</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Global mic button with improved accessibility -->
-  <button class="mic-button" aria-label="Voice input">
-    <div class="pulse-ring"></div>
-    <div class="mic-icon">
-      <i class="fas fa-microphone" aria-hidden="true"></i>
-    </div>
-    <span class="mic-tooltip">Tap to speak</span>
-  </button>
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    // Language dropdown toggle with keyboard support
-    function toggleDropdown() {
-      const dropdown = document.getElementById('languageDropdown');
-      const isExpanded = dropdown.style.display === 'block';
-      dropdown.style.display = isExpanded ? 'none' : 'block';
-      
-      // Update ARIA attributes
-      document.querySelector('.language-selector').setAttribute('aria-expanded', !isExpanded);
-    }
+    // Enhanced chatbot functionality with real API integration
+    document.getElementById('sendMessage').addEventListener('click', function () {
+      sendMessage();
+    });
 
-    // Add keyboard support for language selector
-    document.querySelector('.language-selector').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleDropdown();
+    document.getElementById('userMessage').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        sendMessage();
       }
     });
 
-    // Handle keyboard navigation in dropdown menu
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-      item.addEventListener('keydown', function(e) {
+    // Quick question buttons with keyboard support
+    const quickQuestions = document.querySelectorAll('.quick-question-btn');
+    quickQuestions.forEach(button => {
+      button.addEventListener('click', function () {
+        const question = this.textContent;
+        document.getElementById('userMessage').value = question;
+        sendMessage();
+      });
+
+      button.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          // Set selected language logic here
-          document.querySelector('.language-selector').innerHTML = 
-            `<i class="fas fa-globe" aria-hidden="true"></i> ${this.textContent} <i class="fas fa-chevron-down" aria-hidden="true"></i>`;
-          toggleDropdown();
+          const question = this.textContent;
+          document.getElementById('userMessage').value = question;
+          sendMessage();
         }
       });
     });
 
-    window.addEventListener('click', function (e) {
-      const langSelector = document.querySelector('.language-selector');
-      const dropdown = document.getElementById('languageDropdown');
-      if (!langSelector.contains(e.target)) {
-        dropdown.style.display = 'none';
-        langSelector.setAttribute('aria-expanded', 'false');
+    // Handle microphone button click
+    document.getElementById('micButton').addEventListener('click', function () {
+      // Check if speech recognition is available
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.lang = 'en-IN'; // Set language to Indian English
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        // Add visual feedback for recording
+        this.classList.add('recording');
+
+        recognition.start();
+
+        recognition.onresult = function (event) {
+          const transcript = event.results[0][0].transcript;
+          document.getElementById('userMessage').value = transcript;
+          document.getElementById('micButton').classList.remove('recording');
+          sendMessage();
+        };
+
+        recognition.onerror = function () {
+          document.getElementById('micButton').classList.remove('recording');
+          alert("Speech recognition error. Please try again or type your question.");
+        };
+
+        recognition.onend = function () {
+          document.getElementById('micButton').classList.remove('recording');
+        };
+      } else {
+        alert("Speech recognition is not supported in your browser. Please type your question.");
       }
     });
 
-    // Initialize map with improved loading and error handling
-    document.addEventListener('DOMContentLoaded', function() {
+    function sendMessage() {
+      const userInput = document.getElementById('userMessage');
+      const message = userInput.value.trim();
+
+      if (message) {
+        // Add user message
+        addMessage(message, 'user');
+
+        // Clear input
+        userInput.value = '';
+
+        // Add loading indicator
+        const loadingId = 'msg-loading-' + Date.now();
+        addLoadingMessage(loadingId);
+
+        // Send request to our health_advisor API
+        fetch('/chat_health', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'message=' + encodeURIComponent(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Remove loading indicator
+            const loadingMsg = document.getElementById(loadingId);
+            if (loadingMsg) loadingMsg.remove();
+
+            // Add bot response
+            addMessage(data.response, 'bot');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // Remove loading indicator
+            const loadingMsg = document.getElementById(loadingId);
+            if (loadingMsg) loadingMsg.remove();
+
+            // Add error message
+            addMessage("Sorry, I'm having trouble responding right now. Please try again later.", 'bot');
+          });
+      }
+    }
+
+    function addLoadingMessage(id) {
+      const chatMessages = document.getElementById('chatMessages');
+      const loadingDiv = document.createElement('div');
+      loadingDiv.className = 'message bot-message loading-message';
+      loadingDiv.id = id;
+
+      loadingDiv.innerHTML = `
+      <div class="message-avatar" aria-hidden="true">
+        <i class="fas fa-user-md"></i>
+      </div>
+      <div class="message-content">
+        <span class="typing-indicator">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </span>
+      </div>
+    `;
+
+      chatMessages.appendChild(loadingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addMessage(text, sender) {
+      const chatMessages = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}-message`;
+
+      if (sender === 'bot') {
+        messageDiv.innerHTML = `
+        <div class="message-avatar" aria-hidden="true">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <div class="message-content">
+          <span class="sr-only">Health Advisor says:</span>
+          ${text}
+        </div>
+      `;
+      } else {
+        messageDiv.innerHTML = `
+        <div class="message-content">
+          <span class="sr-only">You said:</span>
+          ${text}
+        </div>
+        <div class="message-avatar" aria-hidden="true">
+          <i class="fas fa-user"></i>
+        </div>
+      `;
+      }
+
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Announce new message for screen readers
+      const announcer = document.createElement('div');
+      announcer.className = 'sr-only';
+      announcer.setAttribute('aria-live', 'assertive');
+      announcer.textContent = sender === 'bot' ? 'New message from Health Advisor' : 'Your message sent';
+      document.body.appendChild(announcer);
+
+      // Remove after announcement
+      setTimeout(() => {
+        document.body.removeChild(announcer);
+      }, 1000);
+    }
+
+    // Enhanced map implementation
+    document.addEventListener('DOMContentLoaded', function () {
       // Show loading indicator
       const mapLoading = document.getElementById('map-loading');
-      
+
       // Initialize map
       const map = L.map('map', {
         attributionControl: false,
@@ -318,7 +352,7 @@
       L.control.zoom({
         position: 'bottomright'
       }).addTo(map);
-      
+
       // Add attribution control
       L.control.attribution({
         position: 'bottomleft'
@@ -330,15 +364,15 @@
       }).addTo(map);
 
       // Hide loading indicator after tiles loaded
-      map.whenReady(function() {
+      map.whenReady(function () {
         if (mapLoading) mapLoading.style.display = 'none';
       });
 
       // Get user's location
-      map.locate({setView: true, maxZoom: 12, timeout: 10000});
+      map.locate({ setView: true, maxZoom: 12, timeout: 10000 });
 
       // When location is found
-      map.on('locationfound', function(e) {
+      map.on('locationfound', function (e) {
         const userLat = e.latitude;
         const userLon = e.longitude;
 
@@ -346,235 +380,169 @@
         const userMarker = L.marker([userLat, userLon]).addTo(map);
         userMarker.bindPopup("<strong>Your Location</strong>").openPopup();
 
-        // Sample healthcare facilities data
-        // In a real app, this would come from an API
-        const facilities = [
-          {name: "District General Hospital", lat: userLat + 0.02, lon: userLon + 0.01, type: "Hospital"},
-          {name: "Primary Health Center", lat: userLat - 0.01, lon: userLon + 0.03, type: "PHC"},
-          {name: "Ayushman Medical Center", lat: userLat + 0.03, lon: userLon - 0.02, type: "Medical Center"}
-        ];
-
-        // Add facility markers with custom icons
-        facilities.forEach(facility => {
-          const facilityMarker = L.marker([facility.lat, facility.lon]).addTo(map);
-          facilityMarker.bindPopup(`<strong>${facility.name}</strong><br>${facility.type}`);
-        });
+        // Fetch nearby hospitals from our API
+        fetchNearbyHospitals(userLat, userLon, map);
       });
 
       // On location error - show friendly message with retry option
-      map.on('locationerror', function(e) {
+      map.on('locationerror', function (e) {
         if (mapLoading) mapLoading.style.display = 'none';
-        
+
         // Create error message overlay
         const errorDiv = document.createElement('div');
         errorDiv.className = 'map-error';
         errorDiv.innerHTML = `
-          <p><i class="fas fa-map-marker-alt"></i> Location access denied or unavailable</p>
-          <button id="retryLocation">Try Again</button>
-        `;
+        <p><i class="fas fa-map-marker-alt"></i> Location access denied or unavailable</p>
+        <button id="retryLocation">Try Again</button>
+      `;
         document.getElementById('map').appendChild(errorDiv);
-        
+
         // Add retry button functionality
-        document.getElementById('retryLocation').addEventListener('click', function() {
+        document.getElementById('retryLocation').addEventListener('click', function () {
           errorDiv.remove();
           if (mapLoading) mapLoading.style.display = 'block';
-          map.locate({setView: true, maxZoom: 12});
+          map.locate({ setView: true, maxZoom: 12 });
         });
       });
     });
 
-    // Enhanced chatbot functionality with keyboard support
-    document.getElementById('sendMessage').addEventListener('click', function() {
-      sendMessage();
-    });
+    // Function to fetch nearby hospitals from our backend API
+    function fetchNearbyHospitals(lat, lon, map) {
+      fetch('/nearby_hospitals', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ lat, lon })
+      })
+        .then(response => response.json())
+        .then(hospitals => {
+          if (hospitals && hospitals.length > 0) {
+            // Create a custom hospital icon
+            const hospitalIcon = L.divIcon({
+              html: '<i class="fas fa-hospital" style="color: #e74c3c; font-size: 20px;"></i>',
+              className: 'hospital-marker',
+              iconSize: [24, 24],
+              iconAnchor: [12, 12]
+            });
 
-    document.getElementById('userMessage').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
+            // Add facility markers for each hospital
+            hospitals.forEach(hospital => {
+              let lat, lon, name;
 
-    // Quick question buttons with keyboard support
-    const quickQuestions = document.querySelectorAll('.quick-question-btn');
-    quickQuestions.forEach(button => {
-      button.addEventListener('click', function() {
-        const question = this.textContent;
-        document.getElementById('userMessage').value = question;
-        sendMessage();
-      });
-      
-      button.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const question = this.textContent;
-          document.getElementById('userMessage').value = question;
-          sendMessage();
-        }
-      });
-    });
+              // Handle different hospital data formats from Overpass API
+              if (hospital.type === 'node') {
+                lat = hospital.lat;
+                lon = hospital.lon;
+              } else if (hospital.center) {
+                lat = hospital.center.lat;
+                lon = hospital.center.lon;
+              }
 
-    // Handle microphone button click
-    document.getElementById('micButton').addEventListener('click', function() {
-      // Check if speech recognition is available
-      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
-        
-        recognition.lang = 'en-IN'; // Set language to Indian English
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        
-        // Add visual feedback for recording
-        this.classList.add('recording');
-        
-        recognition.start();
-        
-        recognition.onresult = function(event) {
-          const transcript = event.results[0][0].transcript;
-          document.getElementById('userMessage').value = transcript;
-          document.getElementById('micButton').classList.remove('recording');
-          sendMessage();
-        };
-        
-        recognition.onerror = function() {
-          document.getElementById('micButton').classList.remove('recording');
-          alert("Speech recognition error. Please try again or type your question.");
-        };
-        
-        recognition.onend = function() {
-          document.getElementById('micButton').classList.remove('recording');
-        };
-      } else {
-        alert("Speech recognition is not supported in your browser. Please type your question.");
-      }
-    });
+              name = hospital.tags ? (hospital.tags.name || 'Hospital') : 'Hospital';
 
-    function sendMessage() {
-      const userInput = document.getElementById('userMessage');
-      const message = userInput.value.trim();
-      
-      if (message) {
-        // Add user message
-        addMessage(message, 'user');
-        
-        // Clear input
-        userInput.value = '';
-        
-        // Add loading indicator
-        const loadingId = 'msg-loading-' + Date.now();
-        addLoadingMessage(loadingId);
-        
-        // Simulate bot response (in real app, this would call your API)
-        setTimeout(() => {
-          // Remove loading indicator
-          const loadingMsg = document.getElementById(loadingId);
-          if (loadingMsg) loadingMsg.remove();
-          
-          const botResponses = {
-            "What preventive measures should I take during flu season?": "During flu season, I recommend getting your annual flu vaccination, washing hands frequently, avoiding close contact with sick individuals, and maintaining a healthy diet with plenty of vitamin C. Also ensure adequate sleep and stay hydrated.",
-            "How to prevent diabetes?": "To prevent diabetes, maintain a healthy weight, eat a balanced diet low in sugar and simple carbohydrates, exercise regularly (30 minutes daily), avoid smoking, limit alcohol, and get regular health checkups. Early intervention can prevent progression to diabetes.",
-            "Recommended vaccines for children?": "Essential vaccines for children include BCG (tuberculosis), OPV/IPV (polio), DPT (diphtheria, pertussis, tetanus), MMR (measles, mumps, rubella), Hepatitis B, Hib, Rotavirus, PCV (pneumococcal), and JE (in endemic areas). Follow the national immunization schedule for timing.",
-            "Tips for mental wellbeing?": "For mental wellbeing, practice daily meditation or mindfulness, maintain social connections, get regular physical activity, ensure adequate sleep, limit screen time, pursue hobbies, and seek professional help when needed. Remember that mental health is as important as physical health."
-          };
-          
-          let botReply = botResponses[message] || "That's an important health question. Based on general guidelines, I'd recommend consulting with a healthcare provider for personalized advice. Regular check-ups, a balanced diet, adequate physical activity, and proper rest form the foundation of good health.";
-          
-          addMessage(botReply, 'bot');
-        }, 1000);
-      }
+              if (lat && lon) {
+                const marker = L.marker([lat, lon], { icon: hospitalIcon }).addTo(map);
+
+                // Create popup content with available information
+                let popupContent = `<strong>${name}</strong>`;
+
+                if (hospital.tags) {
+                  if (hospital.tags.phone) {
+                    popupContent += `<br><i class="fas fa-phone"></i> <a href="tel:${hospital.tags.phone}">${hospital.tags.phone}</a>`;
+                  }
+                  if (hospital.tags.website) {
+                    popupContent += `<br><i class="fas fa-globe"></i> <a href="${hospital.tags.website}" target="_blank">Website</a>`;
+                  }
+                  if (hospital.tags.healthcare) {
+                    popupContent += `<br>Services: ${hospital.tags.healthcare}`;
+                  }
+                }
+
+                marker.bindPopup(popupContent);
+              }
+            });
+
+            // Update facility list based on fetched data
+            updateFacilitiesList(hospitals);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching hospitals:', error);
+        });
     }
 
-    function addLoadingMessage(id) {
-      const chatMessages = document.getElementById('chatMessages');
-      const loadingDiv = document.createElement('div');
-      loadingDiv.className = 'message bot-message loading-message';
-      loadingDiv.id = id;
-      
-      loadingDiv.innerHTML = `
-        <div class="message-avatar" aria-hidden="true">
-          <i class="fas fa-user-md"></i>
+    // Function to update the facilities list in the UI
+    function updateFacilitiesList(hospitals) {
+      const facilitiesList = document.querySelector('.facilities-list');
+
+      // Clear existing facility cards
+      facilitiesList.innerHTML = '';
+
+      // Get the top 3 hospitals (or fewer if less available)
+      const topHospitals = hospitals.slice(0, 3);
+
+      topHospitals.forEach(hospital => {
+        // Get hospital name or default
+        const name = hospital.tags?.name || 'Hospital';
+
+        // Get address information if available
+        let address = '';
+        if (hospital.tags) {
+          const addressParts = [];
+          if (hospital.tags.address) addressParts.push(hospital.tags.address);
+          else {
+            if (hospital.tags['addr:street']) addressParts.push(hospital.tags['addr:street']);
+            if (hospital.tags['addr:city']) addressParts.push(hospital.tags['addr:city']);
+          }
+          address = addressParts.join(', ') || 'Address not available';
+        } else {
+          address = 'Address not available';
+        }
+
+        // Get phone number if available
+        const phone = hospital.tags?.phone || 'Phone not available';
+
+        // Determine hospital type and services
+        let services = [];
+
+        if (hospital.tags) {
+          if (hospital.tags.healthcare) {
+            services.push(hospital.tags.healthcare);
+          }
+          if (hospital.tags.emergency === 'yes') {
+            services.push('24/7 Emergency');
+          }
+          if (hospital.tags.facility) {
+            services.push(hospital.tags.facility);
+          }
+        }
+
+        // If no services found, add some default ones
+        if (services.length === 0) {
+          services = ['General Medicine', 'Outpatient Care'];
+        }
+
+        // Create facility card HTML
+        const facilityCard = document.createElement('div');
+        facilityCard.className = 'facility-card';
+        facilityCard.setAttribute('role', 'listitem');
+
+        facilityCard.innerHTML = `
+        <div class="facility-icon" aria-hidden="true">
+          <i class="fas fa-hospital-alt"></i>
         </div>
-        <div class="message-content">
-          <span class="typing-indicator">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </span>
+        <div class="facility-content">
+          <h3 class="facility-name">${name}</h3>
+          <p class="facility-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${address}</p>
+          <p class="facility-contact"><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:${phone}">${phone}</a></p>
+          <div class="facility-services" aria-label="Services offered">
+            ${services.map(service => `<span class="service-tag">${service}</span>`).join('')}
+          </div>
         </div>
       `;
-      
-      chatMessages.appendChild(loadingDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        facilitiesList.appendChild(facilityCard);
+      });
     }
-
-    function addMessage(text, sender) {
-      const chatMessages = document.getElementById('chatMessages');
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `message ${sender}-message`;
-      
-      if (sender === 'bot') {
-        messageDiv.innerHTML = `
-          <div class="message-avatar" aria-hidden="true">
-            <i class="fas fa-user-md"></i>
-          </div>
-          <div class="message-content">
-            <span class="sr-only">Health Advisor says:</span>
-            ${text}
-          </div>
-        `;
-      } else {
-        messageDiv.innerHTML = `
-          <div class="message-content">
-            <span class="sr-only">You said:</span>
-            ${text}
-          </div>
-          <div class="message-avatar" aria-hidden="true">
-            <i class="fas fa-user"></i>
-          </div>
-        `;
-      }
-      
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      // Announce new message for screen readers
-      const announcer = document.createElement('div');
-      announcer.className = 'sr-only';
-      announcer.setAttribute('aria-live', 'assertive');
-      announcer.textContent = sender === 'bot' ? 'New message from Health Advisor' : 'Your message sent';
-      document.body.appendChild(announcer);
-      
-      // Remove after announcement
-      setTimeout(() => {
-        document.body.removeChild(announcer);
-      }, 1000);
-    }
-
-    // Global mic button functionality
-    document.querySelector('.mic-button').addEventListener('click', function() {
-      // Focus on the chat input if visible in viewport
-      const chatInput = document.getElementById('userMessage');
-      const rect = chatInput.getBoundingClientRect();
-      
-      if (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      ) {
-        chatInput.focus();
-        document.getElementById('micButton').click();
-      } else {
-        // Scroll to chatbot section
-        document.querySelector('.chatbot-container').scrollIntoView({ behavior: 'smooth' });
-        
-        // Focus and activate mic after scrolling
-        setTimeout(() => {
-          chatInput.focus();
-          document.getElementById('micButton').click();
-        }, 800);
-      }
-    });
   </script>
-</body>
-</html>
