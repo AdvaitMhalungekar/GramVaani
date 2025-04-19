@@ -4,9 +4,13 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/map')
+@app.route('/map')                      
 def index():
     return render_template('map.html')
+
+@app.route('/')
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/nearby_hospitals', methods=['POST'])
 def nearby_hospitals():
@@ -30,8 +34,6 @@ def nearby_hospitals():
     print(hospitals)
     return jsonify(hospitals)
 
-def dashboard():
-    return render_template('dashboard.html')
 
 # @app.route('/weather')
 # def weather():
