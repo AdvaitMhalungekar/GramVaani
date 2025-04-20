@@ -12,8 +12,11 @@
 </head>
 
 <body>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <div id="google_translate_element"></div>
     <nav class="navbar">
         <div class="container nav-container">
+            <!-- Logo Section -->
             <div class="logo">
                 <div class="logo-icon">
                     <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo"
@@ -21,30 +24,71 @@
                 </div>
                 <div class="logo-text">Gram<span class="accent">vaani</span></div>
             </div>
+
+            <!-- Header Actions (Language + Mic) -->
             <div class="header-actions">
                 <div class="language-mic-wrapper">
-                    <div class="language-selector" onclick="toggleDropdown()">
-                        <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <button class="mic-navbar">
-                        <i class="fas fa-microphone"></i>
+                    <!-- Google Translate Placeholder -->
+                    <div id="google_translate_element"></div>
+
+                    <!-- Microphone Button -->
+                    <!-- 🔊 Read Selected Text Button -->
+                    <button class="mic-navbar" onclick="readSelectedText()" title="Read Selected Text">
+                        <i class="fas fa-volume-up"></i>
                     </button>
-                </div>
-                <div class="language-dropdown" id="languageDropdown">
-                    <div class="dropdown-item">English</div>
-                    <div class="dropdown-item">हिन्दी</div>
-                    <div class="dropdown-item">मराठी</div>
-                    <div class="dropdown-item">தமிழ்</div>
-                    <div class="dropdown-item">বাংলা</div>
-                    <div class="dropdown-item">తెలుగు</div>
-                    <div class="dropdown-item">ગુજરાતી</div>
-                    <div class="dropdown-item">ଓଡ଼ିଆ</div>
-                    <div class="dropdown-item">ಕನ್ನಡ</div>
-                    <div class="dropdown-item">മലയാളം</div>
+
                 </div>
             </div>
         </div>
     </nav>
+
+    <style>
+        /* Google Translate Element Styling */
+        #google_translate_element {
+            margin-right: 15px;
+        }
+
+        /* Style the Google Translate dropdown to match your site */
+        .goog-te-gadget {
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 14px !important;
+            color: var(--text-primary) !important;
+        }
+
+        .goog-te-gadget .goog-te-combo {
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--primary-light);
+            outline: none;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Hide some elements from the Google Translate widget */
+        .goog-te-gadget-simple img,
+        .goog-te-banner-frame,
+        .goog-te-menu-value span:nth-child(3),
+        .goog-te-menu-value span:nth-child(5) {
+            display: none !important;
+        }
+
+        /* Style the powered by text */
+        .goog-te-gadget-simple span:last-child {
+            font-size: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #google_translate_element {
+                margin-right: 5px;
+            }
+
+            .goog-te-gadget {
+                font-size: 12px !important;
+            }
+        }
+    </style>
 
     <div class="hero-section">
         <div class="container">
@@ -58,52 +102,54 @@
         <div class="main-services">
             <!-- Agricultural Advisory -->
             <a href="/agri" style="text-decoration: none; color: inherit;">
-            <div class="service-card">
-                <div class="service-icon-container agri-bg">
-                    <i class="fas fa-seedling service-icon agri-icon"></i>
-                </div>
-                <div class="service-info">
-                    <h2 class="service-title">Agricultural Advisory</h2>
-                    <p class="service-description">Get expert tips and updates for your farm</p>
-                    <div class="service-action">
-                        <span>Get Started</span>
-                        <i class="fas fa-arrow-right"></i>
+                <div class="service-card">
+                    <div class="service-icon-container agri-bg">
+                        <i class="fas fa-seedling service-icon agri-icon"></i>
+                    </div>
+                    <div class="service-info">
+                        <h2 class="service-title">Agricultural Advisory</h2>
+                        <p class="service-description">Get expert tips and updates for your farm</p>
+                        <div class="service-action">
+                            <span>Get Started</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
             </a>
 
             <!-- Healthcare -->
             <a href="/health" style="text-decoration: none; color: inherit;">
-            <div class="service-card">
-                <div class="service-icon-container health-bg">
-                    <i class="fas fa-heartbeat service-icon health-icon"></i>
-                </div>
-                <div class="service-info">
-                    <h2 class="service-title">Healthcare</h2>
-                    <p class="service-description">Medical info & support for your family</p>
-                    <div class="service-action">
-                        <span>Explore</span>
-                        <i class="fas fa-arrow-right"></i>
+                <div class="service-card">
+                    <div class="service-icon-container health-bg">
+                        <i class="fas fa-heartbeat service-icon health-icon"></i>
+                    </div>
+                    <div class="service-info">
+                        <h2 class="service-title">Healthcare</h2>
+                        <p class="service-description">Medical info & support for your family</p>
+                        <div class="service-action">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
             </a>
 
             <!-- Government Schemes -->
-            <div class="service-card">
-                <div class="service-icon-container govt-bg">
-                    <i class="fas fa-landmark service-icon govt-icon"></i>
-                </div>
-                <div class="service-info">
-                    <h2 class="service-title">Govt. Schemes</h2>
-                    <p class="service-description">Check your eligibility for benefits</p>
-                    <div class="service-action">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
+            <a href="/gov" style="text-decoration: none; color: inherit;">
+                <div class="service-card">
+                    <div class="service-icon-container govt-bg">
+                        <i class="fas fa-landmark service-icon govt-icon"></i>
+                    </div>
+                    <div class="service-info">
+                        <h2 class="service-title">Govt. Schemes</h2>
+                        <p class="service-description">Check your eligibility for benefits</p>
+                        <div class="service-action">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Weather -->
             <a href="/weather" style="text-decoration: none; color: inherit;">
@@ -231,6 +277,155 @@
                 }
             });
         });
+
+        // Add this script at the end of your HTML file, before the closing </body> tag
+
+        // Initialize the Web Speech API
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        // Configure speech recognition
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'hi-IN'; // Default to Hindi, can be changed based on selected language
+
+        // Select all mic buttons
+        const micButtons = document.querySelectorAll('.mic-button, .mic-navbar');
+
+        // Set up event listeners for all mic buttons
+        micButtons.forEach(button => {
+            button.addEventListener('click', startVoiceRecognition);
+        });
+
+        // Function to start voice recognition
+        function startVoiceRecognition() {
+            // Visual feedback - add active class
+            document.querySelector('.mic-button').classList.add('active');
+            document.querySelector('.mic-tooltip').textContent = 'Listening...';
+
+            // Start recognition
+            recognition.start();
+        }
+
+        // Handle speech recognition results
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            console.log('Voice input:', result);
+
+            // Show processing feedback
+            document.querySelector('.mic-tooltip').textContent = 'Processing...';
+
+            // Send the speech input to the server
+            processVoiceCommand(result);
+        };
+
+        // Handle errors
+        recognition.onerror = function (event) {
+            console.error('Speech recognition error:', event.error);
+            resetMicButton('Tap to speak');
+        };
+
+        // When recognition ends
+        recognition.onend = function () {
+            // Don't reset here as we'll handle it after processing
+        };
+
+        // Process the voice command by sending it to the server
+        function processVoiceCommand(text) {
+            fetch('/process_voice', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ command: text }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+
+                    // Handle the redirect based on the response
+                    if (data.redirect) {
+                        // Show redirect feedback
+                        document.querySelector('.mic-tooltip').textContent = `Going to ${data.page}...`;
+
+                        // Wait a moment so user can see the feedback
+                        setTimeout(() => {
+                            window.location.href = data.redirect;
+                        }, 1000);
+                    } else {
+                        resetMicButton('Try again');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error processing voice command:', error);
+                    resetMicButton('Error. Try again');
+                });
+        }
+
+        // Reset the mic button
+        function resetMicButton(message) {
+            document.querySelector('.mic-button').classList.remove('active');
+            document.querySelector('.mic-tooltip').textContent = message;
+
+            // Reset to default message after a delay
+            if (message !== 'Tap to speak') {
+                setTimeout(() => {
+                    document.querySelector('.mic-tooltip').textContent = 'Tap to speak';
+                }, 3000);
+            }
+        }
+
+        // Update language for speech recognition when user changes language
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function () {
+                const language = this.textContent;
+
+                // Map languages to BCP 47 language tags
+                const languageMap = {
+                    'English': 'en-IN',
+                    'हिन्दी': 'hi-IN',
+                    'मराठी': 'mr-IN',
+                    'தமிழ்': 'ta-IN',
+                    'বাংলা': 'bn-IN',
+                    'తెలుగు': 'te-IN',
+                    'ગુજરાતી': 'gu-IN',
+                    'ଓଡ଼ିଆ': 'or-IN',
+                    'ಕನ್ನಡ': 'kn-IN',
+                    'മലയാളം': 'ml-IN'
+                };
+
+                recognition.lang = languageMap[language] || 'hi-IN';
+
+                // Update the displayed language (optional)
+                document.querySelector('.language-selector').innerHTML =
+                    `<i class="fas fa-globe"></i> ${language} <i class="fas fa-chevron-down"></i>`;
+
+                // Close the dropdown
+                document.getElementById('languageDropdown').style.display = 'none';
+            });
+        });
+
+        <!-- ✅ NEW separate script block for readSelectedText -->
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = document.documentElement.lang || 'en-US';
+                speechSynthesis.cancel(); // Stop any ongoing speech
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser doesn't support speech synthesis.");
+            }
+        }
+
+        function readSelectedText() {
+            const selectedText = window.getSelection().toString().trim();
+            if (selectedText.length > 0) {
+                speakText(selectedText);
+            } else {
+                alert("Please select some text to read aloud.");
+            }
+        }
     </script>
 </body>
 

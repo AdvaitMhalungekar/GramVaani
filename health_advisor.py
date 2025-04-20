@@ -1,6 +1,10 @@
 import os
 import google.generativeai as genai
 from weather_fetcher import get_weather_data
+from dotenv import load_dotenv
+
+# Load API key from .env file
+load_dotenv()
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 history= []
@@ -19,7 +23,7 @@ def chat_health(chat, return_text=False):
     model = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
-        system_instruction=f"You are a health advisor chatbot. User will tell about their health issues and you have to provide them preventive measures and console them. You dont have to do the work of doctor. Just help them with home remedies and suggest to see a doctor. Talk in short as if you are chating",
+        system_instruction=f"You are a health advisor chatbot. User will tell about their health issues and you have to provide them preventive measures and console them. Just help them with home remedies and suggest to see a doctor. Talk in short as if you are chating",
     )
     history.append({
         "role": "user",

@@ -21,28 +21,7 @@
         </div>
         <div class="logo-text">Gram<span class="accent">vaani</span></div>
       </div>
-      <div class="header-actions">
-        <div class="language-mic-wrapper">
-          <div class="language-selector" onclick="toggleDropdown()">
-            <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
-          </div>
-          <button class="mic-navbar">
-            <i class="fas fa-microphone"></i>
-          </button>
-        </div>
-        <div class="language-dropdown" id="languageDropdown">
-          <div class="dropdown-item">English</div>
-          <div class="dropdown-item">हिन्दी</div>
-          <div class="dropdown-item">मराठी</div>
-          <div class="dropdown-item">தமிழ்</div>
-          <div class="dropdown-item">বাংলা</div>
-          <div class="dropdown-item">తెలుగు</div>
-          <div class="dropdown-item">ગુજરાતી</div>
-          <div class="dropdown-item">ଓଡ଼ିଆ</div>
-          <div class="dropdown-item">ಕನ್ನಡ</div>
-          <div class="dropdown-item">മലയാളം</div>
-        </div>
-      </div>
+
     </div>
   </nav>
 
@@ -60,23 +39,153 @@
 
     <!-- Quick Access Buttons -->
     <div class="quick-access">
-      <a href="#crop-recommendations" class="quick-access-btn">
-        <i class="fas fa-seedling"></i>
-        <span>Crop Recommendations</span>
-      </a>
       <a href="#disease-detection" class="quick-access-btn">
         <i class="fas fa-microscope"></i>
         <span>Disease Detection</span>
       </a>
-      <a href="#market-prices" class="quick-access-btn">
-        <i class="fas fa-rupee-sign"></i>
-        <span>Market Prices</span>
-      </a>
+
       <a href="#news" class="quick-access-btn">
         <i class="fas fa-newspaper"></i>
         <span>Agri News</span>
       </a>
+
+      <a href="#crop-recommendations" class="quick-access-btn">
+        <i class="fas fa-seedling"></i>
+        <span>Crop Recommendations</span>
+      </a>
+
+      <a href="#market-prices" class="quick-access-btn">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Market Prices</span>
+      </a>
     </div>
+
+    <!-- Plant Disease Detection Section -->
+    <section id="disease-detection" class="section">
+      <h2 class="section-title"><i class="fas fa-microscope"></i> Plant Disease Detection</h2>
+      <p class="section-description">Upload a photo of your crop to identify diseases and get treatment recommendations
+      </p>
+
+      <div class="disease-detection-container">
+        <div class="upload-area">
+          <div class="upload-box" id="uploadBox">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Upload Plant Image</h3>
+            <p>Drag & drop a photo or click to browse</p>
+            <input type="file" id="plantImageInput" accept="image/*" hidden>
+            <button class="upload-btn" onclick="document.getElementById('plantImageInput').click()">Choose File</button>
+          </div>
+          <div class="upload-preview" id="uploadPreview" style="display: none;">
+            <img id="previewImage" src="" alt="Plant Image Preview">
+            <div class="upload-actions">
+              <button class="upload-action-btn" onclick="detectDisease()">
+                <i class="fas fa-search"></i> Detect Disease
+              </button>
+              <button class="upload-action-btn secondary" onclick="resetUpload()">
+                <i class="fas fa-redo"></i> Upload New Image
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="detection-result" id="detectionResult" style="display: none;">
+          <div class="result-header">
+            <i class="fas fa-search"></i>
+            <h3>Detection Results</h3>
+          </div>
+          <div class="result-content">
+            <div class="result-item">
+              <span class="result-label">Disease:</span>
+              <span class="result-value" id="diseaseValue">-</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Confidence:</span>
+              <span class="result-value" id="confidenceValue">-</span>
+            </div>
+          </div>
+          <div class="result-treatment">
+            <h4><i class="fas fa-medkit"></i> Recommended Treatment</h4>
+            <p id="treatmentValue">Upload an image to get treatment recommendations.</p>
+          </div>
+          <div class="result-actions">
+            <button class="result-action-btn">
+              <i class="fas fa-download"></i> Download Report
+            </button>
+            <button class="result-action-btn">
+              <i class="fas fa-share-alt"></i> Share Results
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agri News Section -->
+    <div class="content-wrapper">
+      <section id="news" class="news-section">
+        <h2 class="section-title"><i class="fas fa-newspaper"></i> Agricultural News</h2>
+
+        <div id="news-container">
+          <!-- News will be loaded here from news_fetcher.py -->
+          {% for news_item in agri_news %}
+          <div class="news-card">
+            <div class="news-image">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="news-content">
+              <h3 class="news-title">{{ news_item.title }}</h3>
+              <p class="news-preview">{{ news_item.descripion }}</p>
+              <p class="news-date">{{ news_item.pubDate }}</p>
+              <a href="{{ news_item.link }}" target="_blank" class="news-link">Read More</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="view-all-container">
+          <a href="#" class="view-all-btn">View All News <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Farm Advisor Chat Bot Section -->
+    <section class="chatbot-section">
+      <div class="chatbot-container">
+        <div class="chatbot-header">
+          <h2><i class="fas fa-robot"></i> Krishi Salahkar (Farm Advisor)</h2>
+          <p>Get personalized agricultural advice and answers to your farming questions</p>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot-message">
+            <div class="message-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+              Namaste! I'm your Krishi Salahkar. I can help with crop selection, pest management, fertilizer
+              recommendations, and market information. How can I assist you today?
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input">
+          <button id="micButton" title="Speak your question">
+            <i class="fas fa-microphone"></i>
+          </button>
+          <input type="text" id="userMessage"
+            placeholder="Ask about crops, fertilizers, market prices, or farming techniques...">
+          <button id="sendMessage">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+
+        <div class="quick-questions">
+          <div class="quick-question-btn">When should I harvest wheat?</div>
+          <div class="quick-question-btn">Best pesticide for cotton?</div>
+          <div class="quick-question-btn">How to prevent rice blast?</div>
+          <div class="quick-question-btn">Current MSP for maize?</div>
+        </div>
+      </div>
+    </section>
 
     <!-- Crop Recommendations Section -->
     <section id="crop-recommendations" class="section">
@@ -196,64 +305,7 @@
       </div>
     </section>
 
-    <!-- Plant Disease Detection Section -->
-    <section id="disease-detection" class="section">
-      <h2 class="section-title"><i class="fas fa-microscope"></i> Plant Disease Detection</h2>
-      <p class="section-description">Upload a photo of your crop to identify diseases and get treatment recommendations
-      </p>
 
-      <div class="disease-detection-container">
-        <div class="upload-area">
-          <div class="upload-box" id="uploadBox">
-            <i class="fas fa-cloud-upload-alt"></i>
-            <h3>Upload Plant Image</h3>
-            <p>Drag & drop a photo or click to browse</p>
-            <input type="file" id="plantImageInput" accept="image/*" hidden>
-            <button class="upload-btn" onclick="document.getElementById('plantImageInput').click()">Choose File</button>
-          </div>
-          <div class="upload-preview" id="uploadPreview" style="display: none;">
-            <img id="previewImage" src="" alt="Plant Image Preview">
-            <div class="upload-actions">
-              <button class="upload-action-btn" onclick="detectDisease()">
-                <i class="fas fa-search"></i> Detect Disease
-              </button>
-              <button class="upload-action-btn secondary" onclick="resetUpload()">
-                <i class="fas fa-redo"></i> Upload New Image
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="detection-result" id="detectionResult" style="display: none;">
-          <div class="result-header">
-            <i class="fas fa-search"></i>
-            <h3>Detection Results</h3>
-          </div>
-          <div class="result-content">
-            <div class="result-item">
-              <span class="result-label">Disease:</span>
-              <span class="result-value" id="diseaseValue">-</span>
-            </div>
-            <div class="result-item">
-              <span class="result-label">Confidence:</span>
-              <span class="result-value" id="confidenceValue">-</span>
-            </div>
-          </div>
-          <div class="result-treatment">
-            <h4><i class="fas fa-medkit"></i> Recommended Treatment</h4>
-            <p id="treatmentValue">Upload an image to get treatment recommendations.</p>
-          </div>
-          <div class="result-actions">
-            <button class="result-action-btn">
-              <i class="fas fa-download"></i> Download Report
-            </button>
-            <button class="result-action-btn">
-              <i class="fas fa-share-alt"></i> Share Results
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Market Prices Section -->
     <section id="market-prices" class="section">
@@ -362,73 +414,7 @@
       </div>
     </section>
 
-    <div class="content-wrapper">
-      <!-- Agri News Section -->
-      <section id="news" class="news-section">
-        <h2 class="section-title"><i class="fas fa-newspaper"></i> Agricultural News</h2>
 
-        <div id="news-container">
-          <!-- News will be loaded here from news_fetcher.py -->
-          {% for news_item in agri_news %}
-          <div class="news-card">
-            <div class="news-image">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <div class="news-content">
-              <h3 class="news-title">{{ news_item.title }}</h3>
-              <p class="news-preview">{{ news_item.descripion }}</p>
-              <p class="news-date">{{ news_item.pubDate }}</p>
-              <a href="{{ news_item.link }}" target="_blank" class="news-link">Read More</a>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-
-        <div class="view-all-container">
-          <a href="#" class="view-all-btn">View All News <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </section>
-    </div>
-
-    <!-- Farm Advisor Chat Bot Section -->
-    <section class="chatbot-section">
-      <div class="chatbot-container">
-        <div class="chatbot-header">
-          <h2><i class="fas fa-robot"></i> Krishi Salahkar (Farm Advisor)</h2>
-          <p>Get personalized agricultural advice and answers to your farming questions</p>
-        </div>
-
-        <div class="chat-messages" id="chatMessages">
-          <div class="message bot-message">
-            <div class="message-avatar">
-              <i class="fas fa-robot"></i>
-            </div>
-            <div class="message-content">
-              Namaste! I'm your Krishi Salahkar. I can help with crop selection, pest management, fertilizer
-              recommendations, and market information. How can I assist you today?
-            </div>
-          </div>
-        </div>
-
-        <div class="chat-input">
-          <button id="micButton" title="Speak your question">
-            <i class="fas fa-microphone"></i>
-          </button>
-          <input type="text" id="userMessage"
-            placeholder="Ask about crops, fertilizers, market prices, or farming techniques...">
-          <button id="sendMessage">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-
-        <div class="quick-questions">
-          <div class="quick-question-btn">When should I harvest wheat?</div>
-          <div class="quick-question-btn">Best pesticide for cotton?</div>
-          <div class="quick-question-btn">How to prevent rice blast?</div>
-          <div class="quick-question-btn">Current MSP for maize?</div>
-        </div>
-      </div>
-    </section>
   </div>
 
   <!-- Footer - Same as main page -->

@@ -108,6 +108,7 @@
 .agri-hero {
     background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
     padding: 2rem 0;
+    gap: 1rem;
     color: white;
   }
   
@@ -1066,6 +1067,300 @@
     background-color: #e3f2fd;
     color: #0d47a1;
   }
+
+  /* Disease Detection Section Styling */
+.disease-detection-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-box {
+  border: 2px dashed #66bb6a;
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fff9;
+}
+
+.upload-box i {
+  font-size: 3rem;
+  color: #66bb6a;
+  margin-bottom: 1rem;
+}
+
+.upload-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.upload-box p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.upload-btn {
+  background-color: #66bb6a;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.upload-btn:hover {
+  background-color: #4caf50;
+}
+
+.upload-preview {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-preview img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  flex: 1;
+  background-color: #f0f0f0;
+}
+
+.upload-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.upload-action-btn {
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.upload-action-btn:not(.secondary) {
+  background-color: #66bb6a;
+  color: white;
+}
+
+.upload-action-btn:not(.secondary):hover {
+  background-color: #4caf50;
+}
+
+.upload-action-btn.secondary {
+  background-color: #f0f0f0;
+  color: var(--text-dark);
+}
+
+.upload-action-btn.secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.detection-result {
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.result-header {
+  padding: 1rem;
+  background-color: #f0f7ff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.result-content {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.result-label {
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.result-value {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.result-treatment {
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.result-treatment h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.result-actions {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.result-action-btn {
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: #f0f7ff;
+  color: #1976d2;
+  border: none;
+}
+
+.result-action-btn:hover {
+  background-color: #e3f2fd;
+}
+
+/* News and Chatbot Layout */
+.news-chat-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.news-section {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+}
+
+/* Updated News Card Styling */
+.news-card {
+  display: flex;
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 1.5rem; /* Increased spacing between news cards */
+  border: 1px solid #f0f0f0;
+}
+
+.news-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: #e0e0e0;
+}
+
+.news-image {
+  width: 80px;
+  min-width: 80px;
+  background-color: #e8f5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #4caf50;
+}
+
+.news-content {
+  padding: 1rem;
+  flex: 1;
+}
+
+.news-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.7rem;
+}
+
+.news-preview {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  color: #757575;
+  margin-bottom: 0.5rem;
+}
+
+.news-link {
+  display: inline-block;
+  color: #1976d2;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+/* Adjusted Chatbot Container Styling */
+.chatbot-section {
+  height: 100%;
+}
+
+.chatbot-container {
+  height: 100%;
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
   
   /* Responsive Design */
   @media (max-width: 992px) {
@@ -1080,6 +1375,19 @@
     .quick-access {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .chatbot-container {
+      height: 500px;
+    }
+
+    .disease-detection-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .news-chat-container {
+      grid-template-columns: 1fr;
+    }
+    
   }
   
   @media (max-width: 768px) {

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Scheme Checker - Gramvaani</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='gov.css') }}">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+          <div class="logo">
+            <div class="logo-icon">
+              <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo" class="logo-img">
+            </div>
+            <div class="logo-text">Gram<span class="accent">vaani</span></div>
+          </div>
+        </div>
+      </nav>
+    
+      <!-- Improved Healthcare Hero Section -->
+      <div class="agri-hero">
+        <div class="container">
+          <nav aria-label="Breadcrumb">
+            <div class="breadcrumb">
+              <a href="/">Home</a> <i class="fas fa-chevron-right" aria-hidden="true"></i> <span
+                aria-current="page">Government Schemes</span>
+            </div>
+          </nav>
+          <h1 class="healthcare-title">Government Schemes</h1>
+        </div>
+      </div>
+    
+    <main>
+        <section class="scheme-form">
+            <h3>Find Eligible Government Schemes</h3>
+            <form id="schemeForm">
+                <div class="form-group">
+                    <label for="domain">Select Domain</label>
+                    <select id="domain" name="domain">
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Education">Education</option>
+                        <option value="Health">Health</option>
+                        <option value="Financial Aid">Financial Aid</option>
+                        <option value="Housing">Housing</option>
+                        <option value="Employment">Employment</option>
+                        <option value="Social Welfare">Social Welfare</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="query">Your Query</label>
+                    <textarea id="query" name="query" rows="4" placeholder="e.g. I am a woman farmer from Maharashtra looking for subsidies on organic farming..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Preferred Output Language</label>
+                    <select id="language" name="language">
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="mr">Marathi</option>
+                        <option value="ta">Tamil</option>
+                        <option value="te">Telugu</option>
+                        <option value="kn">Kannada</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="bn">Bengali</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="or">Oriya</option>
+                        <option value="ur">Urdu</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>Find Schemes</span>
+                </button>
+            </form>
+        </section>
+
+        <section class="response-container">
+            <div class="response-box" id="response">
+                <p class="response-placeholder">Your eligible schemes will appear here</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Gramvaani Logo"
+                        class="footer-logo-img">
+                    <span>Gramvaani</span>
+                </div>
+                <p class="footer-tagline">Voice of the Village</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact</a>
+                <a href="#">Help</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
+    const schemeForm = document.getElementById('schemeForm');
+    const domainSelect = document.getElementById('domain');
+    const schemeCards = document.querySelectorAll('.scheme-card');
+    const responseBox = document.getElementById('response');
+    
+    // Add click events to scheme cards to select corresponding domain
+    schemeCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const schemeName = this.querySelector('.scheme-name').textContent;
+            
+            // Find and select the matching option in the dropdown
+            for (let i = 0; i < domainSelect.options.length; i++) {
+                if (domainSelect.options[i].text === schemeName) {
+                    domainSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            
+            // Scroll to form
+            document.querySelector('.scheme-form').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Handle form submission
+    schemeForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const domain = domainSelect.value;
+        const query = document.getElementById('query').value;
+        const language = document.getElementById('language').value;
+        
+        // Validate input
+        if (!query.trim()) {
+            responseBox.innerHTML = '<p style="color: var(--error-color);">Please enter your query details</p>';
+            return;
+        }
+        
+        // Show loading state
+        responseBox.innerHTML = '<p class="loading">Searching for eligible schemes...</p>';
+        
+        try {
+            // This would be an actual API call in a real application
+            // For this example, we'll simulate a response after a delay
+            setTimeout(() => {
+                displayResults(domain, language);
+            }, 1500);
+            
+            /* 
+            // Real API call would look something like this:
+            const response = await fetch('/api/get_schemes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    domain: domain,
+                    query: query,
+                    language: language
+                })
+            });
+            
+            const data = await response.json();
+            displayResults(data);
+            */
+            
+        } catch (error) {
+            responseBox.innerHTML = `<p style="color: var(--error-color);">Error: Could not fetch results. Please try again later.</p>`;
+        }
+    });
+    
+    // Function to display mock results
+    function displayResults(domain, language) {
+        let result = '';
+        
+        // Generate mock data based on domain
+        switch(domain) {
+            case 'Agriculture':
+                result = `
+                <h3>Eligible Schemes for Agriculture</h3>
+                <table>
+                    <tr>
+                        <th>Scheme Name</th>
+                        <th>Benefits</th>
+                        <th>Eligibility</th>
+                    </tr>
+                    <tr>
+                        <td>PM Kisan Samman Nidhi</td>
+                        <td>₹6,000 per year in three equal installments</td>
+                        <td>All landholding farmers' families</td>
+                    </tr>
+                    <tr>
+                        <td>Soil Health Card Scheme</td>
+                        <td>Free soil testing and recommendations</td>
+                        <td>All farmers</td>
+                    </tr>
+                    <tr>
+                        <td>Pradhan Mantri Fasal Bima Yojana</td>
+                        <td>Crop insurance coverage</td>
+                        <td>All farmers growing notified crops</td>
+                    </tr>
+                </table>
+                <p class="application-note">To apply, visit your nearest Krishi Vigyan Kendra or Agricultural Office with your Aadhaar card and land documents.</p>
+                `;
+                break;
+                
+            case 'Education':
+                result = `
+                <h3>Eligible Schemes for Education</h3>
+                <table>
+                    <tr>
+                        <th>Scheme Name</th>
+                        <th>Benefits</th>
+                        <th>Eligibility</th>
+                    </tr>
+                    <tr>
+                        <td>Post-Matric Scholarship</td>
+                        <td>Full tuition fees and maintenance allowance</td>
+                        <td>SC/ST/OBC students with family income below ₹2.5 lakh</td>
+                    </tr>
+                    <tr>
+                        <td>National Means-cum-Merit Scholarship</td>
+                        <td>₹12,000 per annum</td>
+                        <td>Students of class IX with min 55% marks and family income below ₹1.5 lakh</td>
+                    </tr>
+                </table>
+                <p class="application-note">Applications can be submitted online through the National Scholarship Portal.</p>
+                `;
+                break;
+                
+            default:
+                result = `
+                <h3>Eligible Schemes</h3>
+                <p>Based on your query, we've found several schemes that might be applicable to you. Please visit your nearest Common Service Center (CSC) with your Aadhaar card for detailed information and application assistance.</p>
+                `;
+        }
+        
+        responseBox.innerHTML = result;
+    }
+});
+</script>
+</html>

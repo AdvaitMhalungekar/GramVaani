@@ -20,7 +20,7 @@ def chat_weather(chat, return_text=False):
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
         
-        system_instruction=f"This is weather forecast for next 3 days :\n{weather_data}\nyou have to answer questions based on this data in short",
+        system_instruction=f"This is weather forecast for next 3 days :\n{weather_data}\nyou have to answer questions based on this data in short.\n Act as professional weather and agriculture advisor",
     )
     history.append({
         "role": "user",
