@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
   <!-- Navbar - Same as main page -->
   <nav class="navbar">
@@ -55,12 +57,16 @@
   </div>
 
   <div class="container main-content">
-    
+
     <!-- Quick Access Buttons -->
     <div class="quick-access">
       <a href="#crop-recommendations" class="quick-access-btn">
         <i class="fas fa-seedling"></i>
         <span>Crop Recommendations</span>
+      </a>
+      <a href="#disease-detection" class="quick-access-btn">
+        <i class="fas fa-microscope"></i>
+        <span>Disease Detection</span>
       </a>
       <a href="#market-prices" class="quick-access-btn">
         <i class="fas fa-rupee-sign"></i>
@@ -70,17 +76,13 @@
         <i class="fas fa-newspaper"></i>
         <span>Agri News</span>
       </a>
-      <a href="#vr-equipment" class="quick-access-btn vr-btn">
-        <i class="fas fa-vr-cardboard"></i>
-        <span>VR Equipment Guide</span>
-      </a>
     </div>
 
     <!-- Crop Recommendations Section -->
     <section id="crop-recommendations" class="section">
       <h2 class="section-title"><i class="fas fa-seedling"></i> Crop Recommendations</h2>
       <p class="section-description">Based on current soil conditions, weather patterns, and market demand</p>
-      
+
       <div class="crop-grid">
         <div class="crop-card recommended">
           <div class="crop-image">
@@ -103,11 +105,12 @@
                 <span>ROI: ₹60,000/hectare</span>
               </div>
             </div>
-            <p class="crop-description">With upcoming monsoon and favorable weather forecasts, paddy cultivation shows promising returns this season.</p>
+            <p class="crop-description">With upcoming monsoon and favorable weather forecasts, paddy cultivation shows
+              promising returns this season.</p>
             <a href="#" class="crop-details-btn">Detailed Guide</a>
           </div>
         </div>
-        
+
         <div class="crop-card">
           <div class="crop-image">
             <img src="{{ url_for('static', filename='assets/crops/cotton.jpg') }}" alt="Cotton">
@@ -128,11 +131,12 @@
                 <span>ROI: ₹45,000/hectare</span>
               </div>
             </div>
-            <p class="crop-description">Cotton prices expected to be stable. Moderate rainfall predicted makes it suitable for well-drained soils.</p>
+            <p class="crop-description">Cotton prices expected to be stable. Moderate rainfall predicted makes it
+              suitable for well-drained soils.</p>
             <a href="#" class="crop-details-btn">Detailed Guide</a>
           </div>
         </div>
-        
+
         <div class="crop-card">
           <div class="crop-image">
             <img src="{{ url_for('static', filename='assets/crops/moong.jpg') }}" alt="Moong Dal">
@@ -153,11 +157,12 @@
                 <span>ROI: ₹35,000/hectare</span>
               </div>
             </div>
-            <p class="crop-description">Short-duration crop suitable for current season. Government MSP ensures good returns with low water requirement.</p>
+            <p class="crop-description">Short-duration crop suitable for current season. Government MSP ensures good
+              returns with low water requirement.</p>
             <a href="#" class="crop-details-btn">Detailed Guide</a>
           </div>
         </div>
-        
+
         <div class="crop-card recommended">
           <div class="crop-image">
             <img src="{{ url_for('static', filename='assets/crops/okra.jpg') }}" alt="Lady Finger (Okra)">
@@ -179,22 +184,82 @@
                 <span>ROI: ₹80,000/hectare</span>
               </div>
             </div>
-            <p class="crop-description">High demand in local markets currently. Multiple harvests possible with current favorable temperature.</p>
+            <p class="crop-description">High demand in local markets currently. Multiple harvests possible with current
+              favorable temperature.</p>
             <a href="#" class="crop-details-btn">Detailed Guide</a>
           </div>
         </div>
       </div>
-      
+
       <div class="view-all-container">
         <a href="#" class="view-all-btn">View All Crop Recommendations <i class="fas fa-arrow-right"></i></a>
       </div>
     </section>
-    
+
+    <!-- Plant Disease Detection Section -->
+    <section id="disease-detection" class="section">
+      <h2 class="section-title"><i class="fas fa-microscope"></i> Plant Disease Detection</h2>
+      <p class="section-description">Upload a photo of your crop to identify diseases and get treatment recommendations
+      </p>
+
+      <div class="disease-detection-container">
+        <div class="upload-area">
+          <div class="upload-box" id="uploadBox">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Upload Plant Image</h3>
+            <p>Drag & drop a photo or click to browse</p>
+            <input type="file" id="plantImageInput" accept="image/*" hidden>
+            <button class="upload-btn" onclick="document.getElementById('plantImageInput').click()">Choose File</button>
+          </div>
+          <div class="upload-preview" id="uploadPreview" style="display: none;">
+            <img id="previewImage" src="" alt="Plant Image Preview">
+            <div class="upload-actions">
+              <button class="upload-action-btn" onclick="detectDisease()">
+                <i class="fas fa-search"></i> Detect Disease
+              </button>
+              <button class="upload-action-btn secondary" onclick="resetUpload()">
+                <i class="fas fa-redo"></i> Upload New Image
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="detection-result" id="detectionResult" style="display: none;">
+          <div class="result-header">
+            <i class="fas fa-search"></i>
+            <h3>Detection Results</h3>
+          </div>
+          <div class="result-content">
+            <div class="result-item">
+              <span class="result-label">Disease:</span>
+              <span class="result-value" id="diseaseValue">-</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Confidence:</span>
+              <span class="result-value" id="confidenceValue">-</span>
+            </div>
+          </div>
+          <div class="result-treatment">
+            <h4><i class="fas fa-medkit"></i> Recommended Treatment</h4>
+            <p id="treatmentValue">Upload an image to get treatment recommendations.</p>
+          </div>
+          <div class="result-actions">
+            <button class="result-action-btn">
+              <i class="fas fa-download"></i> Download Report
+            </button>
+            <button class="result-action-btn">
+              <i class="fas fa-share-alt"></i> Share Results
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Market Prices Section -->
     <section id="market-prices" class="section">
       <h2 class="section-title"><i class="fas fa-rupee-sign"></i> Market Prices</h2>
       <p class="section-description">Latest commodity prices from major agricultural markets (APMC)</p>
-      
+
       <div class="market-filter">
         <div class="market-select">
           <label for="market-dropdown">Select Market:</label>
@@ -210,7 +275,7 @@
           <i class="fas fa-sync-alt"></i> Last Updated: April 19, 2025, 08:00 AM
         </div>
       </div>
-      
+
       <div class="market-table-container">
         <table class="market-table">
           <thead>
@@ -283,26 +348,17 @@
           </tbody>
         </table>
       </div>
-      
+
       <div class="price-analysis">
         <h3><i class="fas fa-chart-line"></i> Price Analysis</h3>
         <div class="analysis-content">
-          <p><strong>Rising:</strong> Tomato prices continue to rise due to seasonal scarcity. Wheat shows steady increase with government procurement ongoing.</p>
-          <p><strong>Falling:</strong> Onion prices declining as new harvest reaches markets. Cotton showing slight downward trend due to international market pressure.</p>
-          <p><strong>Stable:</strong> Pulses markets remain stable with consistent demand and supply balance. Government buffer stocks maintaining price equilibrium.</p>
+          <p><strong>Rising:</strong> Tomato prices continue to rise due to seasonal scarcity. Wheat shows steady
+            increase with government procurement ongoing.</p>
+          <p><strong>Falling:</strong> Onion prices declining as new harvest reaches markets. Cotton showing slight
+            downward trend due to international market pressure.</p>
+          <p><strong>Stable:</strong> Pulses markets remain stable with consistent demand and supply balance. Government
+            buffer stocks maintaining price equilibrium.</p>
         </div>
-      </div>
-      
-      <div class="market-actions">
-        <a href="#" class="market-action-btn">
-          <i class="fas fa-download"></i> Download Price List
-        </a>
-        <a href="#" class="market-action-btn">
-          <i class="fas fa-history"></i> Price History
-        </a>
-        <a href="#" class="market-action-btn">
-          <i class="fas fa-bell"></i> Set Price Alert
-        </a>
       </div>
     </section>
 
@@ -310,187 +366,61 @@
       <!-- Agri News Section -->
       <section id="news" class="news-section">
         <h2 class="section-title"><i class="fas fa-newspaper"></i> Agricultural News</h2>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-tractor"></i>
+
+        <div id="news-container">
+          <!-- News will be loaded here from news_fetcher.py -->
+          {% for news_item in agri_news %}
+          <div class="news-card">
+            <div class="news-image">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="news-content">
+              <h3 class="news-title">{{ news_item.title }}</h3>
+              <p class="news-preview">{{ news_item.descripion }}</p>
+              <p class="news-date">{{ news_item.pubDate }}</p>
+              <a href="{{ news_item.link }}" target="_blank" class="news-link">Read More</a>
+            </div>
           </div>
-          <div class="news-content">
-            <h3 class="news-title">New Farm Bill to be Introduced Next Month</h3>
-            <p class="news-preview">The government plans to introduce a new farm bill focusing on sustainable agriculture and improved MSP calculation formulas.</p>
-            <p class="news-date">April 18, 2025</p>
-          </div>
+          {% endfor %}
         </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-cloud-rain"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Monsoon Expected to Arrive Early This Year</h3>
-            <p class="news-preview">Meteorological department predicts monsoon to begin two weeks earlier than usual. Farmers advised to prepare fields accordingly.</p>
-            <p class="news-date">April 17, 2025</p>
-          </div>
-        </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-seedling"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">New Drought-Resistant Rice Variety Released</h3>
-            <p class="news-preview">Agricultural University develops new rice variety that requires 40% less water while maintaining yield levels.</p>
-            <p class="news-date">April 15, 2025</p>
-          </div>
-        </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-hand-holding-usd"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Agri Export Reaches New High</h3>
-            <p class="news-preview">Agricultural exports cross ₹5 trillion mark for the first time. Basmati rice and spices lead the growth.</p>
-            <p class="news-date">April 14, 2025</p>
-          </div>
-        </div>
-        
-        <div class="news-card">
-          <div class="news-image">
-            <i class="fas fa-bug"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">Locust Alert in Western Regions</h3>
-            <p class="news-preview">Early warning issued for potential locust swarms in western states. Preventive measures advised.</p>
-            <p class="news-date">April 12, 2025</p>
-          </div>
-        </div>
-        
+
         <div class="view-all-container">
           <a href="#" class="view-all-btn">View All News <i class="fas fa-arrow-right"></i></a>
         </div>
       </section>
-      
-      <!-- VR Equipment Guide Section -->
-      <section id="vr-equipment" class="vr-section">
-        <div class="vr-header">
-          <h2><i class="fas fa-vr-cardboard"></i> VR Equipment Guide</h2>
-          <p>Explore farm equipment in virtual reality</p>
-        </div>
-        
-        <div class="vr-preview">
-          <img src="{{ url_for('static', filename='assets/vr-preview.jpg') }}" alt="VR Equipment Preview" class="vr-image">
-          <div class="vr-overlay">
-            <i class="fas fa-play-circle"></i>
-          </div>
-        </div>
-        
-        <div class="vr-equipment-list">
-          <h3>Available Equipment Guides</h3>
-          <div class="equipment-items">
-            <div class="equipment-item active">
-              <div class="equipment-icon">
-                <i class="fas fa-tractor"></i>
-              </div>
-              <div class="equipment-info">
-                <h4>Modern Tractors</h4>
-                <p>Interactive guide for operating new tractor models</p>
-              </div>
-            </div>
-            
-            <div class="equipment-item">
-              <div class="equipment-icon">
-                <i class="fas fa-spray-can"></i>
-              </div>
-              <div class="equipment-info">
-                <h4>Sprayers</h4>
-                <p>Learn safe & efficient pesticide application techniques</p>
-              </div>
-            </div>
-            
-            <div class="equipment-item">
-              <div class="equipment-icon">
-                <i class="fas fa-wheat-awn"></i>
-              </div>
-              <div class="equipment-info">
-                <h4>Harvesters</h4>
-                <p>Operation & maintenance of combine harvesters</p>
-              </div>
-            </div>
-            
-            <div class="equipment-item">
-              <div class="equipment-icon">
-                <i class="fas fa-seedling"></i>
-              </div>
-              <div class="equipment-info">
-                <h4>Seed Drills</h4>
-                <p>Precision seeding techniques for higher germination</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="vr-actions">
-          <a href="#" class="vr-action-btn primary">
-            <i class="fas fa-vr-cardboard"></i> Start VR Experience
-          </a>
-          <a href="#" class="vr-action-btn secondary">
-            <i class="fas fa-mobile-alt"></i> Mobile Version
-          </a>
-          <a href="#" class="vr-action-btn secondary">
-            <i class="fas fa-download"></i> Download Guides
-          </a>
-        </div>
-      </section>
     </div>
-    
-    <!-- Chat Bot Section -->
+
+    <!-- Farm Advisor Chat Bot Section -->
     <section class="chatbot-section">
       <div class="chatbot-container">
         <div class="chatbot-header">
           <h2><i class="fas fa-robot"></i> Krishi Salahkar (Farm Advisor)</h2>
           <p>Get personalized agricultural advice and answers to your farming questions</p>
         </div>
-        
+
         <div class="chat-messages" id="chatMessages">
           <div class="message bot-message">
             <div class="message-avatar">
               <i class="fas fa-robot"></i>
             </div>
             <div class="message-content">
-              Namaste! I'm your Krishi Salahkar. I can help with crop selection, pest management, fertilizer recommendations, and market information. How can I assist you today?
-            </div>
-          </div>
-          
-          <div class="message user-message">
-            <div class="message-content">
-              What fertilizer should I use for wheat crops?
-            </div>
-            <div class="message-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-          </div>
-          
-          <div class="message bot-message">
-            <div class="message-avatar">
-              <i class="fas fa-robot"></i>
-            </div>
-            <div class="message-content">
-              For wheat crops, I recommend applying NPK (12:32:16) at the rate of 100 kg/hectare during sowing. Follow up with urea (46:0:0) at 50 kg/hectare after 30 days. This balance supports both initial root development and later grain formation. Current soil moisture levels in your area are suitable for this application.
+              Namaste! I'm your Krishi Salahkar. I can help with crop selection, pest management, fertilizer
+              recommendations, and market information. How can I assist you today?
             </div>
           </div>
         </div>
-        
+
         <div class="chat-input">
           <button id="micButton" title="Speak your question">
             <i class="fas fa-microphone"></i>
           </button>
-          <input type="text" id="userMessage" placeholder="Ask about crops, fertilizers, market prices, or farming techniques...">
+          <input type="text" id="userMessage"
+            placeholder="Ask about crops, fertilizers, market prices, or farming techniques...">
           <button id="sendMessage">
             <i class="fas fa-paper-plane"></i>
           </button>
         </div>
-        
+
         <div class="quick-questions">
           <div class="quick-question-btn">When should I harvest wheat?</div>
           <div class="quick-question-btn">Best pesticide for cotton?</div>
@@ -543,12 +473,74 @@
       }
     });
 
-    // Simple chatbot functionality
-    document.getElementById('sendMessage').addEventListener('click', function() {
+    // Plant Disease Detection Upload Preview
+    const plantImageInput = document.getElementById('plantImageInput');
+    const uploadBox = document.getElementById('uploadBox');
+    const uploadPreview = document.getElementById('uploadPreview');
+    const previewImage = document.getElementById('previewImage');
+    const detectionResult = document.getElementById('detectionResult');
+
+    plantImageInput.addEventListener('change', function (e) {
+      if (e.target.files.length > 0) {
+        const file = e.target.files[0];
+        previewImage.src = URL.createObjectURL(file);
+        uploadBox.style.display = 'none';
+        uploadPreview.style.display = 'block';
+      }
+    });
+
+    function resetUpload() {
+      uploadBox.style.display = 'block';
+      uploadPreview.style.display = 'none';
+      detectionResult.style.display = 'none';
+      plantImageInput.value = '';
+    }
+
+    function detectDisease() {
+      // Show loading state
+      document.getElementById('diseaseValue').textContent = 'Analyzing...';
+      document.getElementById('confidenceValue').textContent = '-';
+      document.getElementById('treatmentValue').textContent = 'Please wait while we analyze your plant image...';
+      detectionResult.style.display = 'block';
+
+      // Create form data with the image file
+      const formData = new FormData();
+      formData.append('image', plantImageInput.files[0]);
+
+      // Send the image to the backend for processing
+      fetch('/detect_disease', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Update UI with results from the model
+            document.getElementById('diseaseValue').textContent = data.disease;
+            document.getElementById('confidenceValue').textContent = data.confidence;
+            document.getElementById('treatmentValue').textContent = data.treatment;
+          } else {
+            // Show error
+            document.getElementById('diseaseValue').textContent = 'Detection Failed';
+            document.getElementById('confidenceValue').textContent = '-';
+            document.getElementById('treatmentValue').textContent = 'Error: ' + data.error;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Show error in UI
+          document.getElementById('diseaseValue').textContent = 'Detection Failed';
+          document.getElementById('confidenceValue').textContent = '-';
+          document.getElementById('treatmentValue').textContent = 'An unexpected error occurred. Please try again.';
+        });
+    }
+
+    // Farm Advisor Chatbot
+    document.getElementById('sendMessage').addEventListener('click', function () {
       sendMessage();
     });
 
-    document.getElementById('userMessage').addEventListener('keypress', function(e) {
+    document.getElementById('userMessage').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
         sendMessage();
       }
@@ -557,7 +549,7 @@
     // Quick question buttons
     const quickQuestions = document.querySelectorAll('.quick-question-btn');
     quickQuestions.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function () {
         const question = this.textContent;
         document.getElementById('userMessage').value = question;
         sendMessage();
@@ -567,27 +559,32 @@
     function sendMessage() {
       const userInput = document.getElementById('userMessage');
       const message = userInput.value.trim();
-      
+
       if (message) {
         // Add user message
         addMessage(message, 'user');
-        
+
         // Clear input
         userInput.value = '';
-        
-        // Simulate bot response (in real app, this would call your API)
-        setTimeout(() => {
-          const botResponses = {
-            "When should I harvest wheat?": "Based on current crop conditions and weather forecast, the ideal time for wheat harvesting in your region would be in the next 7-10 days. Look for golden-yellow color in the crop and grain hardness test. Moisture content should be below 14% for optimal storage.",
-            "Best pesticide for cotton?": "For the current bollworm infestation in cotton crops in your area, I recommend using Spinosad 45% SC at 0.5 ml/liter of water. It's effective against bollworms while being relatively safer for beneficial insects. Always wear protective gear during application.",
-            "How to prevent rice blast?": "For preventing rice blast disease, especially with the current humid conditions, use seed treatment with Tricyclazole 75% WP before sowing. For standing crops, spray Isoprothiolane 40% EC at 1.5 ml/liter of water. Maintain proper field drainage and balanced fertilizer application.",
-            "Current MSP for maize?": "The current Minimum Support Price (MSP) for maize is ₹2,090 per quintal for the 2024-25 marketing season. Government procurement centers in your district are operational at Bhiwani and Rohtak mandis with direct bank transfers within 3 days."
-          };
-          
-          let botReply = botResponses[message] || "Thank you for your question. Let me analyze the current agricultural data for your region to provide the most accurate advice. Based on your soil type, current weather patterns, and market trends, I would recommend focusing on efficient water management techniques in the coming weeks given the expected weather changes.";
-          
-          addMessage(botReply, 'bot');
-        }, 1000);
+
+        // Send message to server
+        fetch('/chat_farm', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            'message': message
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            addMessage(data.response, 'bot');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            addMessage("Sorry, I'm having trouble connecting right now. Please try again later.", 'bot');
+          });
       }
     }
 
@@ -595,7 +592,7 @@
       const chatMessages = document.getElementById('chatMessages');
       const messageDiv = document.createElement('div');
       messageDiv.className = `message ${sender}-message`;
-      
+
       if (sender === 'bot') {
         messageDiv.innerHTML = `
           <div class="message-avatar">
@@ -615,19 +612,11 @@
           </div>
         `;
       }
-      
+
       chatMessages.appendChild(messageDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-
-    // VR Equipment interaction
-    const equipmentItems = document.querySelectorAll('.equipment-item');
-    equipmentItems.forEach(item => {
-      item.addEventListener('click', function() {
-        equipmentItems.forEach(el => el.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
   </script>
 </body>
+
 </html>

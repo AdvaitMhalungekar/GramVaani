@@ -19,4 +19,4 @@ def text_to_speech(text, lang='en'):
     except Exception as e:
         print("❌ Error:", e)
 
-
+text_to_speech("Hello, this is a test of the text to speech functionality.", lang='en')
