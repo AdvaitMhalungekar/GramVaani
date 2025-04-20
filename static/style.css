@@ -609,6 +609,28 @@
   .mic-button:hover .mic-tooltip {
     opacity: 1;
   }
+
+  #google_translate_element {
+    display: none;
+  }
+  
+  .custom-lang-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #eee;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
+  }
+  
+  .custom-lang-btn:hover {
+    background-color: #ddd;
+  }
+  
+
+
+  /*  ############################################################################### */
   
   /* Responsive styles */
   @media (max-width: 768px) {

@@ -21,28 +21,6 @@
         </div>
         <div class="logo-text">Gram<span class="accent">vaani</span></div>
       </div>
-      <div class="header-actions">
-        <div class="language-mic-wrapper">
-          <div class="language-selector" onclick="toggleDropdown()">
-            <i class="fas fa-globe"></i> हिन्दी <i class="fas fa-chevron-down"></i>
-          </div>
-          <button class="mic-navbar">
-            <i class="fas fa-microphone"></i>
-          </button>
-        </div>
-        <div class="language-dropdown" id="languageDropdown">
-          <div class="dropdown-item">English</div>
-          <div class="dropdown-item">हिन्दी</div>
-          <div class="dropdown-item">मराठी</div>
-          <div class="dropdown-item">தமிழ்</div>
-          <div class="dropdown-item">বাংলা</div>
-          <div class="dropdown-item">తెలుగు</div>
-          <div class="dropdown-item">ગુજરાતી</div>
-          <div class="dropdown-item">ଓଡ଼ିଆ</div>
-          <div class="dropdown-item">ಕನ್ನಡ</div>
-          <div class="dropdown-item">മലയാളം</div>
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -155,17 +133,20 @@
         {% if weather_news %}
         {% for news in weather_news %}
         <div class="news-card">
-          <div class="news-image">
-            {% set icons = ['fa-cloud-rain', 'fa-sun', 'fa-wind', 'fa-cloud-bolt', 'fa-temperature-high', 'fa-umbrella',
-            'fa-smog'] %}
-            <i class="fas {{ icons[loop.index0 % icons|length] }}"></i>
-          </div>
-          <div class="news-content">
-            <h3 class="news-title">{{ news.title }}</h3>
-            <p class="news-preview">{{ news.description if news.description else 'Click to read more about this news
-              article.' }}</p>
-            <p class="news-date">{{ news.pubDate }}</p>
-            <a href="{{ news.link }}" target="_blank" class="news-link">Read more</a>
+          <div class="news-card">
+            <div class="news-image">
+              {% set icons = ['fa-cloud-rain', 'fa-sun', 'fa-wind', 'fa-cloud-bolt', 'fa-temperature-high',
+              'fa-umbrella',
+              'fa-smog'] %}
+              <i class="fas {{ icons[loop.index0 % icons|length] }}"></i>
+            </div>
+            <div class="news-content">
+              <h3 class="news-title">{{ news.title }}</h3>
+              <p class="news-preview">{{ news.description if news.description else 'Click to read more about this news
+                article.' }}</p>
+              <p class="news-date">{{ news.pubDate }}</p>
+              <a href="{{ news.link }}" target="_blank" class="news-link">Read more</a>
+            </div>
           </div>
         </div>
         {% endfor %}
@@ -179,7 +160,7 @@
       <!-- Chatbot Section -->
       <div class="chatbot-container">
         <div class="chatbot-header">
-          <h2><i class="fas fa-robot"></i> Farm Advisor</h2>
+          <h2><i class="fas fa-robot"></i> Weather Advisor</h2>
           <p>Get personalized recommendations based on weather</p>
         </div>
 
@@ -189,7 +170,7 @@
               <i class="fas fa-robot"></i>
             </div>
             <div class="message-content">
-              Hello! I'm your farm advisor. Based on today's weather forecast, I can help you plan your agricultural
+              Hello! I'm your weather advisor. Based on today's weather forecast, I can help you plan your agricultural
               activities. What would you like to know?
             </div>
           </div>
@@ -254,14 +235,6 @@
     </div>
   </footer>
 
-  <div class="mic-button">
-    <div class="pulse-ring"></div>
-    <div class="mic-icon">
-      <i class="fas fa-microphone"></i>
-    </div>
-    <div class="mic-tooltip">Tap to speak</div>
-  </div>
-
   <script>
     function toggleHourly(index) {
       const weatherCard = document.getElementById('hourly-' + index).parentElement;
@@ -316,11 +289,19 @@
       });
     });
 
+    // Update your existing sendMessage function
     function sendMessage() {
       const userInput = document.getElementById('userMessage');
       const message = userInput.value.trim();
 
       if (message) {
+        // Remove any "Listening..." messages
+        const messages = document.querySelectorAll('.bot-message');
+        const lastMessage = messages[messages.length - 1];
+        if (lastMessage && lastMessage.querySelector('.message-content').textContent.trim() === "Listening...") {
+          lastMessage.remove();
+        }
+
         // Add user message
         addMessage(message, 'user');
 
@@ -374,6 +355,82 @@
       chatMessages.appendChild(messageDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
+    // Add this speech recognition code at the end of your existing script tag
+    document.addEventListener('DOMContentLoaded', function () {
+      const micButton = document.getElementById('micButton');
+
+      // Check if browser supports speech recognition
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.lang = 'en-IN'; // Set to Indian English
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        // Handle speech recognition results
+        recognition.onresult = function (event) {
+          const transcript = event.results[0][0].transcript;
+          document.getElementById('userMessage').value = transcript;
+
+          // Visual feedback that recording has ended
+          micButton.classList.remove('recording');
+
+          // Automatically send the message
+          sendMessage();
+        };
+
+        recognition.onerror = function (event) {
+          console.error('Speech recognition error:', event.error);
+          micButton.classList.remove('recording');
+
+          // Show error message in chat
+          if (event.error === 'no-speech') {
+            addMessage("I couldn't hear anything. Please try again.", 'bot');
+          } else {
+            addMessage("Sorry, I couldn't understand that. Please try typing your question.", 'bot');
+          }
+        };
+
+        recognition.onend = function () {
+          micButton.classList.remove('recording');
+        };
+
+        // Mic button event listener
+        micButton.addEventListener('click', function () {
+          if (micButton.classList.contains('recording')) {
+            recognition.stop();
+            micButton.classList.remove('recording');
+          } else {
+            recognition.start();
+            micButton.classList.add('recording');
+
+            // Add a temporary message to indicate recording
+            addMessage("Listening...", 'bot');
+          }
+        });
+      } else {
+        // Browser does not support speech recognition
+        micButton.addEventListener('click', function () {
+          alert('Speech recognition is not supported in your browser. Please try Chrome or Edge.');
+        });
+      }
+
+      // Also make the global floating mic button work for the chatbot
+      const floatingMicButton = document.querySelector('.mic-button');
+      if (floatingMicButton) {
+        floatingMicButton.addEventListener('click', function () {
+          // Scroll to chatbot
+          document.querySelector('.chatbot-container').scrollIntoView({ behavior: 'smooth' });
+
+          // Simulate click on the chatbot mic button
+          setTimeout(() => {
+            micButton.click();
+          }, 500);
+        });
+      }
+    });
   </script>
 </body>
 

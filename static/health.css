@@ -519,8 +519,9 @@
     box-shadow: var(--shadow-md);
     overflow: hidden;
     display: flex;
+    --space-sm: 1rem;
     flex-direction: column;
-    height: 1000px;
+    height: 800px;
   }
   
   .chatbot-header {

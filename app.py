@@ -8,6 +8,7 @@ import io
 import base64
 import os
 from transformers import AutoModelForImageClassification, AutoImageProcessor
+from dashboard_agent import generate_text
 
 app = Flask(__name__)
 
@@ -27,6 +28,10 @@ def load_disease_model():
 @app.route('/map')                      
 def index():
     return render_template('map.html')
+
+@app.route('/gov')
+def gov():
+    return render_template('gov.html')
 
 @app.route('/')
 def dashboard():
@@ -80,7 +85,14 @@ def weather():
     # Get real weather data for Kolhapur
     from weather_fetcher import get_weather_data
     weather_data = get_weather_data("Kolhapur")
-    return render_template("weatherPage.html", weather_data=weather_data)
+    
+    # Fetch weather-related news
+    from news_fetcher import health_news_fetcher
+    weather_news = health_news_fetcher(q="weather OR rainfall OR climate OR monsoon OR temperature OR storm OR forecast")[:4]  # Get top 4 news items
+    
+    # Get weather alerts (you might need to implement this function)
+    weather_alerts = weather_data[-1]
+    return render_template("weatherPage.html", weather_data=weather_data, weather_news=weather_news, )
 
 @app.route("/chat_weather", methods=["POST"])
 def chat_weather_route():
@@ -170,6 +182,45 @@ def detect_disease():
         return jsonify({
             "success": False,
             "error": str(e)
+        })
+        
+    # Add these routes to your app.py file
+
+@app.route('/process_voice', methods=['POST'])
+def process_voice():
+    data = request.get_json()
+    voice_command = data.get('command', '')
+    
+    # Use the dashboard_agent to process the command
+    try:
+        result = generate_text(voice_command)
+        
+        # Map the result to a redirect URL
+        redirect_map = {
+            'health': '/health',
+            'agri': '/agri',
+            'weather': '/weather'
+        }
+        
+        # Get the redirect URL if available
+        redirect_url = redirect_map.get(result.strip().lower())
+        
+        if redirect_url:
+            return jsonify({
+                'success': True,
+                'page': result.strip().lower(),
+                'redirect': redirect_url
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'Could not understand command'
+            })
+    except Exception as e:
+        print(f"Error processing voice command: {e}")
+        return jsonify({
+            'success': False,
+            'message': 'Error processing command'
         })
 
 if __name__ == '__main__':
